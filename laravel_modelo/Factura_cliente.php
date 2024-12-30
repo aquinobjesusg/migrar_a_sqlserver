@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Factura_cliente extends Model
+{
+
+    use HasFactory;
+
+    public $timestamps = true;
+
+    protected $table = 'factura_cliente';
+
+    protected $fillable = ['numfactura','cedu_rif','fecha_factura','fecha_vence_fact','fecha_cance_fact','cliente','status_factura','tipo_factura','paciente','nom_paciente','tipo_precio','nro_orden','total_costo','total_neto','total_bruto','total_final','total_descuento','descuento_linea','notas','hora_documento','monto_pac','monto_emp','numero_consulta','numero_historia','tipo_doc','medico','nro_cxp','usercreated_at','userupdated_at','created_at','updated_at','user_data_id','id'];
+ 
+}
+

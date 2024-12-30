@@ -1,0 +1,789 @@
+DROP TABLE   almacenes
+CREATE TABLE almacenes ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , in_cliente INTEGER   ) 
+ 
+DROP TABLE   antece_paciente
+CREATE TABLE antece_paciente ( numhistoria DOUBLE   , codeantecedente VARCHAR ( 4 )  , detalles MEDIUMTEXT   , descripcion VARCHAR ( 50 )  , tipo VARCHAR ( 2 )  , tipo2 VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   antecedentes
+CREATE TABLE antecedentes ( codantecedente VARCHAR ( 4 )  , descripcion VARCHAR ( 40 )  , codtipo VARCHAR ( 2 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   areas
+CREATE TABLE areas ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   areas_configuracion
+CREATE TABLE areas_configuracion ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 100 )  , id_area INTEGER   , in_disponible INTEGER   ) 
+ 
+DROP TABLE   areas_inventario
+CREATE TABLE areas_inventario ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 100 )  , in_externo INTEGER   , in_autorizado INTEGER   ) 
+ 
+DROP TABLE   aseguradoras
+CREATE TABLE aseguradoras ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   bancos
+CREATE TABLE bancos ( cod_banco VARCHAR ( 6 )  , nombre_banco VARCHAR ( 150 )  , id_banco VARCHAR ( 50 )  , descrip VARCHAR ( 150 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   baremo_quiru
+CREATE TABLE baremo_quiru ( consecuti INTEGER   , cod_inter VARCHAR ( 3 )  , cod_clini VARCHAR ( 3 )  , ced_paciente VARCHAR ( 8 )  , nom_interven VARCHAR ( 300 )  , nom_paciente VARCHAR ( 200 )  , fecha_creado DATETIME   , fecha_opera DATETIME   , hora_opera TIME   , monto_opera DOUBLE   , tipo_rol VARCHAR ( 1 )  , pagada VARCHAR ( 1 )  , medico_prin INTEGER   , medico_aux INTEGER   , historia INTEGER   , diagnostico VARCHAR ( 100 )  , monto_abono DOUBLE   , monto_resta DOUBLE   , empre VARCHAR ( 30 )  , hora_fin TIME   , duracion INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   barrios
+CREATE TABLE barrios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descrip VARCHAR ( 150 )  ) 
+ 
+DROP TABLE   cajas_secciones
+CREATE TABLE cajas_secciones ( id_caja_sesiones DOUBLE   , id_caja VARCHAR ( 4 )  , id_sesion VARCHAR ( 8 )  , id_responsable VARCHAR ( 8 )  , fapertura TIMESTAMP NULL DEFAULT NULL    , fcierre TIMESTAMP NULL DEFAULT NULL    , mtcierree INTEGER   , mtcierrec INTEGER   , mtcierreo INTEGER   , mtnotasc INTEGER   , mtnotasd INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cargos
+CREATE TABLE cargos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   catalogosdeproductos
+CREATE TABLE catalogosdeproductos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , codigodebarra VARCHAR ( 100 )  , numerodereferencia VARCHAR ( 20 )  , primerprecio DOUBLE   , segundoprecio DOUBLE   , tercerprescio DOUBLE   , categoriafamilia_id INTEGER   , categoriasubfamilia_id INTEGER   , tipodeproducto_id INTEGER   , componenteactivo VARCHAR ( 120 )  , nombrecomercial VARCHAR ( 150 )  ) 
+ 
+DROP TABLE   citas_medicas
+CREATE TABLE citas_medicas ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , fe_cita TIMESTAMP NULL DEFAULT NULL    , id_medico DOUBLE   , tx_descripcion VARCHAR ( 100 )  , in_activo DOUBLE   , ho_cita TIME   ) 
+ 
+DROP TABLE   citas_triaje
+CREATE TABLE citas_triaje ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , fe_triaje TIMESTAMP NULL DEFAULT NULL    , id_cita DOUBLE   , tx_peso VARCHAR ( 20 )  , tx_talla VARCHAR ( 20 )  , tx_tension VARCHAR ( 30 )  , tx_pulsaciones VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   ciudad
+CREATE TABLE ciudad ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   clientes
+CREATE TABLE clientes ( id_cliente VARCHAR ( 6 )  , nombres VARCHAR ( 255 )  , rif VARCHAR ( 30 )  , direc1 VARCHAR ( 40 )  , direc2 VARCHAR ( 40 )  , direc3 VARCHAR ( 40 )  , contacto VARCHAR ( 30 )  , cargo VARCHAR ( 30 )  , telcontacto VARCHAR ( 30 )  , telefono1 VARCHAR ( 15 )  , extension1 VARCHAR ( 10 )  , telefono2 VARCHAR ( 15 )  , extension2 VARCHAR ( 10 )  , email VARCHAR ( 80 )  , usuario VARCHAR ( 3 )  , fcrea TIMESTAMP NULL DEFAULT NULL    , domicilio VARCHAR ( 255 )  , nit VARCHAR ( 30 )  , domicilio1 VARCHAR ( 255 )  , porcretiva DOUBLE   , tipo VARCHAR ( 3 )  , sub_tipo VARCHAR ( 3 )  , estado VARCHAR ( 1 )  , porcretalcd DOUBLE   , telefono3 VARCHAR ( 30 )  , telefono4 VARCHAR ( 30 )  , email1 VARCHAR ( 255 )  , id_tipo_persona VARCHAR ( 20 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   clientestip
+CREATE TABLE clientestip ( id_tipo VARCHAR ( 3 )  , tipo VARCHAR ( 30 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   clinicas
+CREATE TABLE clinicas ( cod_clin VARCHAR ( 3 )  , nom_clin VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cola
+CREATE TABLE cola ( fecha DATETIME   , numhistoria DOUBLE   , numorden INTEGER   , atendido DOUBLE   , estado DOUBLE   , turno VARCHAR ( 1 )  , motivo VARCHAR ( 30 )  , monto DOUBLE   , hora_ini TIME   , hora_fin TIME   , tiempo INTEGER   , tipo VARCHAR ( 10 )  , conse INTEGER   , medico INTEGER   , sms VARCHAR ( 1 )  , sms_text VARCHAR ( 160 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cola_dia_no_labor
+CREATE TABLE cola_dia_no_labor ( dia DATETIME   , tipo VARCHAR ( 10 )  , motivo VARCHAR ( 100 )  , medico INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cola_triaje
+CREATE TABLE cola_triaje ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , id_paciente INTEGER   , fe_triaje TIMESTAMP NULL DEFAULT NULL    , id_producto VARCHAR ( 5 )  , tx_valor VARCHAR ( 20 )  , id_tratamiento DOUBLE   ) 
+ 
+DROP TABLE   conceptodecxc
+CREATE TABLE conceptodecxc ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   conceptodecxp
+CREATE TABLE conceptodecxp ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   conceptos
+CREATE TABLE conceptos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   constancia_obs
+CREATE TABLE constancia_obs ( numhistoria DOUBLE   , numconsulta DOUBLE   , observacion MEDIUMTEXT   , titulo VARCHAR ( 50 )  , observacion01 MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   consultas
+CREATE TABLE consultas ( numhistoria DOUBLE   , nroconsulta DOUBLE   , fecha DATETIME   , enfermedadactual MEDIUMTEXT   , peso DOUBLE   , talla DOUBLE   , fc DOUBLE   , pp DOUBLE   , circcefalica DOUBLE   , circtoraxica DOUBLE   , circabdominal DOUBLE   , tasentado VARCHAR ( 7 )  , taacostado VARCHAR ( 7 )  , tapie VARCHAR ( 7 )  , resultadoexamencomp MEDIUMTEXT   , eliminado VARCHAR ( 1 )  , faringe MEDIUMTEXT   , nariz MEDIUMTEXT   , oido MEDIUMTEXT   , laringe MEDIUMTEXT   , cuello MEDIUMTEXT   , otros MEDIUMTEXT   , evolucion MEDIUMTEXT   , observaciones MEDIUMTEXT   , tem_otica DOUBLE   , tem_oral DOUBLE   , tem_axilar DOUBLE   , medico INTEGER   , funcionae MEDIUMTEXT   , test MEDIUMTEXT   , eco_tiro MEDIUMTEXT   , reso_mag MEDIUMTEXT   , otros_t MEDIUMTEXT   , interrogatorio MEDIUMTEXT   , desinto MEDIUMTEXT   , mamogra MEDIUMTEXT   , mapa MEDIUMTEXT   , sms VARCHAR ( 1 )  , resumen MEDIUMTEXT   , evaluacion MEDIUMTEXT   , rayosx MEDIUMTEXT   , espirometria MEDIUMTEXT   , espirometria_pef DOUBLE   , espirometria_fev1 DOUBLE   , broncoscopia MEDIUMTEXT   , detalle_exa MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   consultorios
+CREATE TABLE consultorios ( codigo VARCHAR ( 10 )  , consultorio VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   convenios
+CREATE TABLE convenios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   cuentas_x_pagar
+CREATE TABLE cuentas_x_pagar ( nro_cxp DOUBLE   , origen_cxp VARCHAR ( 2 )  , fec_cxp DATETIME   , edo_cxp VARCHAR ( 1 )  , tipo_cxp VARCHAR ( 1 )  , conc_cxp VARCHAR ( 4 )  , cxp_codigo VARCHAR ( 20 )  , cxp_descripcion VARCHAR ( 150 )  , fec_docum DATETIME   , cxp_nro_control VARCHAR ( 25 )  , cxp_nro_factura VARCHAR ( 25 )  , cxp_referencia VARCHAR ( 25 )  , cxp_mto_neto DOUBLE   , cxp_ret_isrl DOUBLE   , cxp_m_ret_isrl DOUBLE   , cxp_iva DOUBLE   , cxp_mto_iva DOUBLE   , cxp_mto_total DOUBLE   , cxp_ret_iva DOUBLE   , cxp_m_ret_iva DOUBLE   , cxp_mto_total_pagar DOUBLE   , cxp_saldo_a_pagar DOUBLE   , cxp_chekear VARCHAR ( 1 )  , cxp_forma VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cuentas_x_pagar_mov
+CREATE TABLE cuentas_x_pagar_mov ( nro_registro DOUBLE   , nro_cxp DOUBLE   , nro_mov DOUBLE   , fecha_emision DATETIME   , nro_documento VARCHAR ( 100 )  , tip_documento VARCHAR ( 2 )  , monto_pagar DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cuentasbancarias
+CREATE TABLE cuentasbancarias ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , entidadbancaria_id INTEGER   , tipodecuenta_id INTEGER   ) 
+ 
+DROP TABLE   cuestionario
+CREATE TABLE cuestionario ( nrohistoria DOUBLE   , nroconsulta INTEGER   , digestivo MEDIUMTEXT   , respiratorio MEDIUMTEXT   , circulatorio MEDIUMTEXT   , musculoesqueletico MEDIUMTEXT   , nerviosa MEDIUMTEXT   , urinario MEDIUMTEXT   , reproductor MEDIUMTEXT   , sentidos MEDIUMTEXT   , denticion MEDIUMTEXT   , lactancia MEDIUMTEXT   , otras MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cumanaoca
+CREATE TABLE cumanaoca ( primera VARCHAR ( 10 )  , cumanacoa VARCHAR ( 10 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   cxcobrar
+CREATE TABLE cxcobrar ( id_renglon VARCHAR ( 20 )  , fecha TIMESTAMP NULL DEFAULT NULL    , fdocum TIMESTAMP NULL DEFAULT NULL    , id_docum VARCHAR ( 2 )  , documento VARCHAR ( 30 )  , monto DOUBLE   , festimada TIMESTAMP NULL DEFAULT NULL    , cliente VARCHAR ( 6 )  , historia DOUBLE   , codesegemp VARCHAR ( 20 )  , tipo VARCHAR ( 1 )  , status VARCHAR ( 1 )  , id_tipop VARCHAR ( 2 )  , pdocum VARCHAR ( 30 )  , pbanco VARCHAR ( 2 )  , clave VARCHAR ( 20 )  , freal TIMESTAMP NULL DEFAULT NULL    , movimieto VARCHAR ( 6 )  , cuenta VARCHAR ( 30 )  , banco VARCHAR ( 2 )  , operador VARCHAR ( 30 )  , concepto VARCHAR ( 3 )  , referencia VARCHAR ( 20 )  , fdocum1 TIMESTAMP NULL DEFAULT NULL    , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   datos_grafica
+CREATE TABLE datos_grafica ( historia DOUBLE   , consulta DOUBLE   , grosor_abdominal DOUBLE   , indice_masa DOUBLE   , micro_album DOUBLE   , otro_1 DOUBLE   , otro_2 MEDIUMTEXT   , otro_3 MEDIUMTEXT   , otro_4 DOUBLE   , otro_5 DOUBLE   , otro_6 DOUBLE   , otro_7 DOUBLE   , otro_8 DOUBLE   , otro_9 DOUBLE   , otro_10 DOUBLE   , otro_11 DOUBLE   , otro_12 DOUBLE   , otro_13 DOUBLE   , otro_14 DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   dd_arterial_mi
+CREATE TABLE dd_arterial_mi ( numhistoria DOUBLE   , num_consulta DOUBLE   , indicacion VARCHAR ( 100 )  , referido_por DOUBLE   , hc_text VARCHAR ( 50 )  , iliaca_ext_der DOUBLE   , iliaca_ext_izq DOUBLE   , feromonal_comun_der DOUBLE   , feromonal_comun_izq DOUBLE   , fer_superf_prox_der DOUBLE   , fer_superf_prox_izq DOUBLE   , fer_superf_distal_der DOUBLE   , fer_superf_distal_izq DOUBLE   , poplitea_der DOUBLE   , poplitea_izq DOUBLE   , tibial_ante_der DOUBLE   , tibial_ante_izq DOUBLE   , tibial_post_der DOUBLE   , tibial_post_izq DOUBLE   , peronea_der DOUBLE   , peronea_izq DOUBLE   , conclusion MEDIUMTEXT   , equipo VARCHAR ( 30 )  , tansductor VARCHAR ( 30 )  , iliaca_ext VARCHAR ( 5 )  , feromonal_comun VARCHAR ( 5 )  , fer_superf_prox VARCHAR ( 5 )  , fer_superf_distal VARCHAR ( 5 )  , poplitea VARCHAR ( 5 )  , tibial_ante VARCHAR ( 5 )  , tibial_post VARCHAR ( 5 )  , peronea VARCHAR ( 3 )  , modo_b MEDIUMTEXT   , modo_color MEDIUMTEXT   , segunda_armonica VARCHAR ( 1 )  , contraste VARCHAR ( 1 )  , llenado VARCHAR ( 1 )  , full_text MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   departamentos
+CREATE TABLE departamentos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   department
+CREATE TABLE department ( dept_id INTEGER   , dept_name VARCHAR ( 40 )  , dept_head_id INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   detalles_factura_cliente
+CREATE TABLE detalles_factura_cliente ( cod_inventario VARCHAR ( 2 )  , numfactura INTEGER   , tipo_articulo VARCHAR ( 25 )  , nombre VARCHAR ( 50 )  , precio DOUBLE   , descuento DOUBLE   , cantidad INTEGER   , fecha_doc DATETIME   , tipo_precio VARCHAR ( 3 )  , total_articulo DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   detalles_presupuesto_plantilla
+CREATE TABLE detalles_presupuesto_plantilla ( cod_inventario VARCHAR ( 2 )  , consecutivo INTEGER   , tipo_articulo VARCHAR ( 25 )  , nombre VARCHAR ( 50 )  , precio DOUBLE   , descuento DOUBLE   , cantidad INTEGER   , fecha_doc DATETIME   , tipo_documento VARCHAR ( 3 )  , total_articulo DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   detequip
+CREATE TABLE detequip ( id_producto VARCHAR ( 5 )  , consec VARCHAR ( 3 )  , especifi VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   diagnostico_paciente
+CREATE TABLE diagnostico_paciente ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codediagnostico VARCHAR ( 5 )  , detalle_diagnostco VARCHAR ( 100 )  , orden INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   diagnosticos
+CREATE TABLE diagnosticos ( codediagnostico VARCHAR ( 5 )  , descripcion VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   dias_semana
+CREATE TABLE dias_semana ( fecha DATETIME   , dia_semana VARCHAR ( 10 )  , semana INTEGER   , ano INTEGER   , descripcion VARCHAR ( 100 )  , tipo_dia VARCHAR ( 10 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   dieta_paciente
+CREATE TABLE dieta_paciente ( histroria DOUBLE   , consulta DOUBLE   , cod_dieta VARCHAR ( 2 )  , descripcion MEDIUMTEXT   , ejecutada VARCHAR ( 1 )  , calorias INTEGER   , dieta VARCHAR ( 200 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   dietas
+CREATE TABLE dietas ( cod_dieta VARCHAR ( 2 )  , descripcion MEDIUMTEXT   , calorias DOUBLE   , dietas VARCHAR ( 200 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   doctores
+CREATE TABLE doctores ( cedula DOUBLE   , apellidos VARCHAR ( 30 )  , nombres VARCHAR ( 30 )  , clinica VARCHAR ( 60 )  , direccion MEDIUMTEXT   , telefono VARCHAR ( 108 )  , ciudad VARCHAR ( 30 )  , nota MEDIUMTEXT   , codeespecial VARCHAR ( 3 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_doppler
+CREATE TABLE eco_doppler ( historia DOUBLE   , consulta DOUBLE   , arteria_uraina_menor VARCHAR ( 20 )  , arteria_uraina_mayor VARCHAR ( 20 )  , arteria_umbilical_menor VARCHAR ( 20 )  , arteria_umbilical_mayor VARCHAR ( 20 )  , arteria_cerebral_menor VARCHAR ( 20 )  , arteria_cerebral_mayor VARCHAR ( 20 )  , ductos_venosos VARCHAR ( 1 )  , ven_umbilical VARCHAR ( 1 )  , relac_aorta VARCHAR ( 1 )  , texto MEDIUMTEXT   , conclusion MEDIUMTEXT   , fecha DATETIME   , arteria_uraina_menor_izq VARCHAR ( 20 )  , arteria_uraina_mayor_izq VARCHAR ( 20 )  , sugerencias MEDIUMTEXT   , gesta INTEGER   , fur DATETIME   , relacion_ud VARCHAR ( 20 )  , relacion_ui VARCHAR ( 20 )  , relacion_u VARCHAR ( 20 )  , relacion_cm VARCHAR ( 20 )  , pico_ud VARCHAR ( 20 )  , pico_ui VARCHAR ( 20 )  , pico_u VARCHAR ( 20 )  , pico_cm VARCHAR ( 20 )  , para VARCHAR ( 10 )  , puro_texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_obstetrico
+CREATE TABLE eco_obstetrico ( historia DOUBLE   , consulta DOUBLE   , gesta INTEGER   , fur DATETIME   , eg VARCHAR ( 40 )  , saco_gestacional INTEGER   , circular_ovuide VARCHAR ( 1 )  , alargado VARCHAR ( 1 )  , retraido VARCHAR ( 1 )  , anormal VARCHAR ( 1 )  , movimiento_embrionario VARCHAR ( 1 )  , actividad_cardiaca VARCHAR ( 1 )  , lcc INTEGER   , dbp INTEGER   , huevo_anembrionado VARCHAR ( 1 )  , mola VARCHAR ( 1 )  , restos_abortivos VARCHAR ( 1 )  , embarazo_ectopico VARCHAR ( 1 )  , otros MEDIUMTEXT   , observacion MEDIUMTEXT   , dianostico MEDIUMTEXT   , fecha DATETIME   , tn INTEGER   , posicionutreo VARCHAR ( 1 )  , cuerpo DOUBLE   , transverso DOUBLE   , antero DOUBLE   , ovarioderlong DOUBLE   , ovarioderap DOUBLE   , ovariodertras DOUBLE   , ovarioizqlong DOUBLE   , ovarioizqap DOUBLE   , ovarioizqtras DOUBLE   , cuerpo_utero VARCHAR ( 1 )  , der DOUBLE   , izqu DOUBLE   , lcr DOUBLE   , sa_vit DOUBLE   , t_nucal DOUBLE   , dc_venoso VARCHAR ( 1 )  , para VARCHAR ( 10 )  , puro_texto MEDIUMTEXT   , posicionavf_d VARCHAR ( 1 )  , posicionrvf_d VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_obstetrico_tercer
+CREATE TABLE eco_obstetrico_tercer ( historia DOUBLE   , consulta DOUBLE   , gesta INTEGER   , fur DATETIME   , eg VARCHAR ( 40 )  , gestacion VARCHAR ( 1 )  , situacion VARCHAR ( 1 )  , dorso VARCHAR ( 1 )  , presentacion VARCHAR ( 1 )  , bio_ca_bp INTEGER   , bio_ca_cc INTEGER   , bio_ca_of INTEGER   , bio_in_ic INTEGER   , bio_or_ioe INTEGER   , bio_or_io INTEGER   , bio_car_apc INTEGER   , bio_car_apt INTEGER   , bio_aorta INTEGER   , bio_abdomen INTEGER   , bio_ta INTEGER   , bio_ca INTEGER   , bio_humero INTEGER   , bio_cubito INTEGER   , bio_femur INTEGER   , bio_tibia INTEGER   , bio_sacro INTEGER   , bio_peso_fetal INTEGER   , bio_talla INTEGER   , bio_sexo VARCHAR ( 1 )  , ana_polo_cefalico VARCHAR ( 1 )  , ana_ventriculos_cerebrales VARCHAR ( 1 )  , ana_cerebelo VARCHAR ( 1 )  , ana_rostro_fetal VARCHAR ( 1 )  , ana_actitud_fetal VARCHAR ( 1 )  , ana_columna_vertebral VARCHAR ( 1 )  , ana_torax VARCHAR ( 1 )  , ana_relacion VARCHAR ( 1 )  , ana_corazon VARCHAR ( 1 )  , ana_corte_tracameral VARCHAR ( 1 )  , ana_tracto_de_salida VARCHAR ( 1 )  , ana_estomago VARCHAR ( 1 )  , ana_intestino VARCHAR ( 1 )  , ana_paredes_abdominales VARCHAR ( 1 )  , ana_rinone VARCHAR ( 1 )  , ana_vejiga VARCHAR ( 1 )  , ana_ex_brazo_an_md VARCHAR ( 1 )  , ana_ex_brazo_an_mi VARCHAR ( 1 )  , ana_ex_muslo_ppd VARCHAR ( 1 )  , ana_ex_muslo_ppi VARCHAR ( 1 )  , fun_liquido_amniotico VARCHAR ( 1 )  , fun_indice_la INTEGER   , fun_dp_ubicacion VARCHAR ( 1 )  , fun_dp_grado VARCHAR ( 10 )  , fun_dp_grosor INTEGER   , fun_dp_cordon_umbilical VARCHAR ( 1 )  , fun_dp_movimientos_respiratorios VARCHAR ( 1 )  , fun_dp_tono_fetal VARCHAR ( 1 )  , conclusion MEDIUMTEXT   , observacion MEDIUMTEXT   , fecha DATETIME   , movimientos_feto VARCHAR ( 1 )  , reactividad_cardiaca VARCHAR ( 1 )  , liquido_amniotico VARCHAR ( 1 )  , puro_texto MEDIUMTEXT   , gemelo INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_obstetrico_tercer_2
+CREATE TABLE eco_obstetrico_tercer_2 ( historia INTEGER   , consulta INTEGER   , gesta INTEGER   , fur DATETIME   , eg VARCHAR ( 40 )  , gestacion VARCHAR ( 1 )  , situacion VARCHAR ( 1 )  , dorso VARCHAR ( 1 )  , presentacion VARCHAR ( 1 )  , bio_ca_bp INTEGER   , bio_ca_cc INTEGER   , bio_ca_of INTEGER   , bio_in_ic INTEGER   , bio_or_ioe INTEGER   , bio_or_io INTEGER   , bio_car_apc INTEGER   , bio_car_apt INTEGER   , bio_aorta INTEGER   , bio_abdomen INTEGER   , bio_ta INTEGER   , bio_ca INTEGER   , bio_humero INTEGER   , bio_cubito INTEGER   , bio_femur INTEGER   , bio_tibia INTEGER   , bio_sacro INTEGER   , bio_peso_fetal INTEGER   , bio_talla INTEGER   , bio_sexo VARCHAR ( 1 )  , ana_polo_cefalico VARCHAR ( 1 )  , ana_ventriculos_cerebrales VARCHAR ( 1 )  , ana_cerebelo VARCHAR ( 1 )  , ana_rostro_fetal VARCHAR ( 1 )  , ana_actitud_fetal VARCHAR ( 1 )  , ana_columna_vertebral VARCHAR ( 1 )  , ana_torax VARCHAR ( 1 )  , ana_relacion VARCHAR ( 1 )  , ana_corazon VARCHAR ( 1 )  , ana_corte_tracameral VARCHAR ( 1 )  , ana_tracto_de_salida VARCHAR ( 1 )  , ana_estomago VARCHAR ( 1 )  , ana_intestino VARCHAR ( 1 )  , ana_paredes_abdominales VARCHAR ( 1 )  , ana_rinone VARCHAR ( 1 )  , ana_vejiga VARCHAR ( 1 )  , ana_ex_brazo_an_md VARCHAR ( 1 )  , ana_ex_brazo_an_mi VARCHAR ( 1 )  , ana_ex_muslo_ppd VARCHAR ( 1 )  , ana_ex_muslo_ppi VARCHAR ( 1 )  , fun_liquido_amniotico VARCHAR ( 1 )  , fun_indice_la INTEGER   , fun_dp_ubicacion VARCHAR ( 1 )  , fun_dp_grado VARCHAR ( 10 )  , fun_dp_grosor INTEGER   , fun_dp_cordon_umbilical VARCHAR ( 1 )  , fun_dp_movimientos_respiratorios VARCHAR ( 1 )  , fun_dp_tono_fetal VARCHAR ( 1 )  , conclusion MEDIUMTEXT   , observacion MEDIUMTEXT   , fecha DATETIME   , movimientos_feto VARCHAR ( 1 )  , reactividad_cardiaca VARCHAR ( 1 )  , liquido_amniotico VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_obstetrico_tercer_2_o
+CREATE TABLE eco_obstetrico_tercer_2_o ( historia INTEGER   , consulta INTEGER   , gesta INTEGER   , fur DATETIME   , eg VARCHAR ( 40 )  , gestacion VARCHAR ( 1 )  , situacion VARCHAR ( 1 )  , dorso VARCHAR ( 1 )  , presentacion VARCHAR ( 1 )  , bio_ca_bp INTEGER   , bio_ca_cc INTEGER   , bio_ca_of INTEGER   , bio_in_ic INTEGER   , bio_or_ioe INTEGER   , bio_or_io INTEGER   , bio_car_apc INTEGER   , bio_car_apt INTEGER   , bio_aorta INTEGER   , bio_abdomen INTEGER   , bio_ta INTEGER   , bio_ca INTEGER   , bio_humero INTEGER   , bio_cubito INTEGER   , bio_femur INTEGER   , bio_tibia INTEGER   , bio_sacro INTEGER   , bio_peso_fetal INTEGER   , bio_talla INTEGER   , bio_sexo VARCHAR ( 1 )  , ana_polo_cefalico VARCHAR ( 1 )  , ana_ventriculos_cerebrales VARCHAR ( 1 )  , ana_cerebelo VARCHAR ( 1 )  , ana_rostro_fetal VARCHAR ( 1 )  , ana_actitud_fetal VARCHAR ( 1 )  , ana_columna_vertebral VARCHAR ( 1 )  , ana_torax VARCHAR ( 1 )  , ana_relacion VARCHAR ( 1 )  , ana_corazon VARCHAR ( 1 )  , ana_corte_tracameral VARCHAR ( 1 )  , ana_tracto_de_salida VARCHAR ( 1 )  , ana_estomago VARCHAR ( 1 )  , ana_intestino VARCHAR ( 1 )  , ana_paredes_abdominales VARCHAR ( 1 )  , ana_rinone VARCHAR ( 1 )  , ana_vejiga VARCHAR ( 1 )  , ana_ex_brazo_an_md VARCHAR ( 1 )  , ana_ex_brazo_an_mi VARCHAR ( 1 )  , ana_ex_muslo_ppd VARCHAR ( 1 )  , ana_ex_muslo_ppi VARCHAR ( 1 )  , fun_liquido_amniotico VARCHAR ( 1 )  , fun_indice_la INTEGER   , fun_dp_ubicacion VARCHAR ( 1 )  , fun_dp_grado VARCHAR ( 10 )  , fun_dp_grosor INTEGER   , fun_dp_cordon_umbilical VARCHAR ( 1 )  , fun_dp_movimientos_respiratorios VARCHAR ( 1 )  , fun_dp_tono_fetal VARCHAR ( 1 )  , conclusion MEDIUMTEXT   , observacion MEDIUMTEXT   , fecha DATETIME   , movimientos_feto VARCHAR ( 1 )  , reactividad_cardiaca VARCHAR ( 1 )  , liquido_amniotico VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_obstetrico_tercer_o
+CREATE TABLE eco_obstetrico_tercer_o ( historia INTEGER   , consulta INTEGER   , gesta INTEGER   , fur DATETIME   , eg VARCHAR ( 40 )  , gestacion VARCHAR ( 1 )  , situacion VARCHAR ( 1 )  , dorso VARCHAR ( 1 )  , presentacion VARCHAR ( 1 )  , bio_ca_bp INTEGER   , bio_ca_cc INTEGER   , bio_ca_of INTEGER   , bio_in_ic INTEGER   , bio_or_ioe INTEGER   , bio_or_io INTEGER   , bio_car_apc INTEGER   , bio_car_apt INTEGER   , bio_aorta INTEGER   , bio_abdomen INTEGER   , bio_ta INTEGER   , bio_ca INTEGER   , bio_humero INTEGER   , bio_cubito INTEGER   , bio_femur INTEGER   , bio_tibia INTEGER   , bio_sacro INTEGER   , bio_peso_fetal INTEGER   , bio_talla INTEGER   , bio_sexo VARCHAR ( 1 )  , ana_polo_cefalico VARCHAR ( 1 )  , ana_ventriculos_cerebrales VARCHAR ( 1 )  , ana_cerebelo VARCHAR ( 1 )  , ana_rostro_fetal VARCHAR ( 1 )  , ana_actitud_fetal VARCHAR ( 1 )  , ana_columna_vertebral VARCHAR ( 1 )  , ana_torax VARCHAR ( 1 )  , ana_relacion VARCHAR ( 1 )  , ana_corazon VARCHAR ( 1 )  , ana_corte_tracameral VARCHAR ( 1 )  , ana_tracto_de_salida VARCHAR ( 1 )  , ana_estomago VARCHAR ( 1 )  , ana_intestino VARCHAR ( 1 )  , ana_paredes_abdominales VARCHAR ( 1 )  , ana_rinone VARCHAR ( 1 )  , ana_vejiga VARCHAR ( 1 )  , ana_ex_brazo_an_md VARCHAR ( 1 )  , ana_ex_brazo_an_mi VARCHAR ( 1 )  , ana_ex_muslo_ppd VARCHAR ( 1 )  , ana_ex_muslo_ppi VARCHAR ( 1 )  , fun_liquido_amniotico VARCHAR ( 1 )  , fun_indice_la INTEGER   , fun_dp_ubicacion VARCHAR ( 1 )  , fun_dp_grado VARCHAR ( 10 )  , fun_dp_grosor INTEGER   , fun_dp_cordon_umbilical VARCHAR ( 1 )  , fun_dp_movimientos_respiratorios VARCHAR ( 1 )  , fun_dp_tono_fetal VARCHAR ( 1 )  , conclusion MEDIUMTEXT   , observacion MEDIUMTEXT   , fecha DATETIME   , movimientos_feto VARCHAR ( 1 )  , reactividad_cardiaca VARCHAR ( 1 )  , liquido_amniotico VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   eco_pelvico
+CREATE TABLE eco_pelvico ( numhistoria DOUBLE   , fecha DATETIME   , posicionavf VARCHAR ( 1 )  , centrar VARCHAR ( 1 )  , patron VARCHAR ( 1 )  , cuerpo DOUBLE   , antero DOUBLE   , transverso DOUBLE   , cuello DOUBLE   , anterocuello DOUBLE   , espesor DOUBLE   , linea VARCHAR ( 1 )  , observacion MEDIUMTEXT   , nroconsulta DOUBLE   , ovarioderlong DOUBLE   , ovarioderap DOUBLE   , ovariodertras DOUBLE   , ovarioizqlong DOUBLE   , ovarioizqap DOUBLE   , ovarioizqtras DOUBLE   , fondosacolibre VARCHAR ( 1 )  , fondosacootro VARCHAR ( 80 )  , idxecografico MEDIUMTEXT   , sugerencias MEDIUMTEXT   , formautero VARCHAR ( 30 )  , observacionovario MEDIUMTEXT   , bordeutero VARCHAR ( 1 )  , fur DATETIME   , gesta INTEGER   , trans_convex VARCHAR ( 10 )  , trans_transvaginal VARCHAR ( 10 )  , vagina VARCHAR ( 10 )  , volumen_der DOUBLE   , volumen_izq DOUBLE   , vagina_llena VARCHAR ( 1 )  , posicionavf_d VARCHAR ( 1 )  , posicionrvf_d VARCHAR ( 1 )  , linea_continuo VARCHAR ( 1 )  , linea_homo VARCHAR ( 1 )  , linea_cavidad_u VARCHAR ( 1 )  , para VARCHAR ( 10 )  , puro_texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ecocadiograma_fetal
+CREATE TABLE ecocadiograma_fetal ( historia DOUBLE   , consulta DOUBLE   , biome_dbp INTEGER   , biome_dof INTEGER   , biome_cc INTEGER   , biome_relacion INTEGER   , biome_cardiaca INTEGER   , biome_toraxica INTEGER   , biome_ca INTEGER   , biome_humero INTEGER   , biome_femur INTEGER   , biome_saco INTEGER   , anatomi_datos MEDIUMTEXT   , pla_funi_placenta VARCHAR ( 1 )  , pla_funi_grado VARCHAR ( 10 )  , pla_funi_grosor INTEGER   , pla_funi_cordon_umb VARCHAR ( 10 )  , pla_funi_liquido_anm VARCHAR ( 10 )  , pla_funi_pef INTEGER   , pla_funi_sexo VARCHAR ( 1 )  , conclusion MEDIUMTEXT   , sugerencia MEDIUMTEXT   , fecha DATETIME   , gesta INTEGER   , cesarea INTEGER   , parto INTEGER   , aborto INTEGER   , otros VARCHAR ( 20 )  , fur DATETIME   , eg INTEGER   , referido INTEGER   , texto_inicio MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ekg
+CREATE TABLE ekg ( ritmo VARCHAR ( 60 )  , fc VARCHAR ( 60 )  , pr VARCHAR ( 60 )  , aqrs VARCHAR ( 60 )  , qt VARCHAR ( 60 )  , ap VARCHAR ( 60 )  , at VARCHAR ( 60 )  , alteraciones VARCHAR ( 60 )  , conclusiones MEDIUMTEXT   , numhistoria DOUBLE   , numconsulta DOUBLE   , hbsai VARCHAR ( 10 )  , birdhh VARCHAR ( 10 )  , bcrdhh VARCHAR ( 10 )  , bav VARCHAR ( 10 )  , primer VARCHAR ( 10 )  , segundo VARCHAR ( 10 )  , tercero VARCHAR ( 10 )  , birihh VARCHAR ( 10 )  , bcrihh VARCHAR ( 10 )  , hallazgos MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   emision_pagos
+CREATE TABLE emision_pagos ( nro_emision DOUBLE   , fecha_emision DATETIME   , descripcion VARCHAR ( 100 )  , cod_banco VARCHAR ( 6 )  , estado VARCHAR ( 1 )  , monto_pagar DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   emision_pagos_detalle
+CREATE TABLE emision_pagos_detalle ( nro_registro DOUBLE   , nro_emision DOUBLE   , nro_cxp DOUBLE   , nro_mov DOUBLE   , origen_cxp VARCHAR ( 2 )  , cxp_codigo VARCHAR ( 20 )  , cxp_descripcion VARCHAR ( 150 )  , fecha_emision DATETIME   , nro_documento VARCHAR ( 100 )  , tip_documento VARCHAR ( 2 )  , saldo_pagar DOUBLE   , monto_pagar DOUBLE   , estado VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   empleados
+CREATE TABLE empleados ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , codigoempleado VARCHAR ( 30 )  , nombreempleado VARCHAR ( 150 )  , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   empleadoscargafamiliar
+CREATE TABLE empleadoscargafamiliar ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , empleado_id INTEGER   , seguro VARCHAR ( 100 )  , persno VARCHAR ( 20 )  , last_name VARCHAR ( 70 )  , first_name VARCHAR ( 70 )  , memb VARCHAR ( 60 )  , first_name1 VARCHAR ( 70 )  , last_name1 VARCHAR ( 70 )  , gender_key VARCHAR ( 50 )  , birth_date TIMESTAMP NULL DEFAULT NULL    ) 
+ 
+DROP TABLE   employee
+CREATE TABLE employee ( emp_id INTEGER   , manager_id INTEGER   , emp_fname VARCHAR ( 30 )  , emp_lname VARCHAR ( 30 )  , dept_id INTEGER   , street VARCHAR ( 40 )  , city VARCHAR ( 20 )  , state VARCHAR ( 4 )  , zip_code VARCHAR ( 9 )  , phone VARCHAR ( 10 )  , status VARCHAR ( 1 )  , ss_number VARCHAR ( 11 )  , salary DOUBLE   , start_date DATETIME   , termination_date DATETIME   , birth_date DATETIME   , bene_health_ins VARCHAR ( 1 )  , bene_life_ins VARCHAR ( 1 )  , bene_day_care VARCHAR ( 1 )  , sex VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   endosc_diges_infer
+CREATE TABLE endosc_diges_infer ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , equipo VARCHAR ( 30 )  , indicacion VARCHAR ( 60 )  , sedacion VARCHAR ( 60 )  , esofago_estado VARCHAR ( 1 )  , esofago_descripcion MEDIUMTEXT   , estomago_estado VARCHAR ( 1 )  , estomago_descripcion MEDIUMTEXT   , duodeno_estado VARCHAR ( 1 )  , duodeno_descripcion MEDIUMTEXT   , ima_esofago VARCHAR ( 300 )  , obs_ima_esofago MEDIUMTEXT   , ima_estomago VARCHAR ( 300 )  , obs_ima_estomago MEDIUMTEXT   , ima_duodeno VARCHAR ( 300 )  , obs_ima_duodeno MEDIUMTEXT   , conclusiones MEDIUMTEXT   , referido INTEGER   , full_texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   endosc_diges_super
+CREATE TABLE endosc_diges_super ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , equipo VARCHAR ( 30 )  , indicacion VARCHAR ( 60 )  , sedacion VARCHAR ( 60 )  , descripcion MEDIUMTEXT   , ima_primera VARCHAR ( 300 )  , obs_ima_primera MEDIUMTEXT   , ima_segunda VARCHAR ( 300 )  , obs_ima_segunda MEDIUMTEXT   , ima_tercera VARCHAR ( 300 )  , obs_ima_tercera MEDIUMTEXT   , conclusiones MEDIUMTEXT   , referido INTEGER   , full_texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   entidadbancaria
+CREATE TABLE entidadbancaria ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   especial
+CREATE TABLE especial ( codeespecial VARCHAR ( 3 )  , especialidad VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   espiro
+CREATE TABLE espiro ( historia DOUBLE   , consulta DOUBLE   , pef DOUBLE   , pve DOUBLE   , texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   estado
+CREATE TABLE estado ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   estatus
+CREATE TABLE estatus ( id_status VARCHAR ( 1 )  , nombre VARCHAR ( 20 )  , tipo_status VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   evolucion
+CREATE TABLE evolucion ( especialidad VARCHAR ( 200 )  , ciudad VARCHAR ( 20 )  , logo VARCHAR ( 500 )  , linea_1 VARCHAR ( 90 )  , linea_2 VARCHAR ( 90 )  , linea_3 VARCHAR ( 90 )  , lineag_1 VARCHAR ( 115 )  , lineag_2 VARCHAR ( 115 )  , clave INTEGER   , fecha DATETIME   , rif VARCHAR ( 40 )  , reporte_vacio VARCHAR ( 1 )  , moneda VARCHAR ( 10 )  , impuesto VARCHAR ( 20 )  , por_impues DOUBLE   , am_pm VARCHAR ( 1 )  , cantidad_paciente INTEGER   , lunes_i TIME   , lunes_f TIME   , martes_i TIME   , martes_f TIME   , miercoles_i TIME   , miercoles_f TIME   , jueves_i TIME   , jueves_f TIME   , vienes_i TIME   , viernes_f TIME   , sabado_i TIME   , sabado_f TIME   , tiempo_paci INTEGER   , domingo_i TIME   , domigo_f TIME   , lunes VARCHAR ( 1 )  , martes VARCHAR ( 1 )  , miercoles VARCHAR ( 1 )  , jueves VARCHAR ( 1 )  , viernes VARCHAR ( 1 )  , sabado VARCHAR ( 1 )  , domingo VARCHAR ( 1 )  , feriado VARCHAR ( 100 )  , cedula VARCHAR ( 20 )  , min_salud VARCHAR ( 20 )  , col_med VARCHAR ( 20 )  , cita_previa VARCHAR ( 1 )  , telefono VARCHAR ( 20 )  , cobra_honorarios VARCHAR ( 1 )  , por_cobranza DOUBLE   , por_retención_seg DOUBLE   , por_retención_part DOUBLE   , accionista VARCHAR ( 1 )  , consultorio VARCHAR ( 10 )  , contrasena VARCHAR ( 20 )  , paga_iva VARCHAR ( 1 )  , sms_user VARCHAR ( 20 )  , sms_clave VARCHAR ( 20 )  , sms_cantidad_total INTEGER   , sms_telefono_llamada VARCHAR ( 30 )  , sms_sexo_medico VARCHAR ( 1 )  , sms_proveedor VARCHAR ( 1 )  , correo_med VARCHAR ( 100 )  , in_activo DOUBLE   , tx_clave VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   evolucion_copy
+CREATE TABLE evolucion_copy ( especialidad VARCHAR ( 40 )  , ciudad VARCHAR ( 20 )  , logo VARCHAR ( 500 )  , linea_1 VARCHAR ( 90 )  , linea_2 VARCHAR ( 90 )  , linea_3 VARCHAR ( 90 )  , lineag_1 VARCHAR ( 115 )  , lineag_2 VARCHAR ( 115 )  , clave INTEGER   , fecha DATETIME   , rif VARCHAR ( 40 )  , reporte_vacio VARCHAR ( 1 )  , moneda VARCHAR ( 10 )  , impuesto VARCHAR ( 20 )  , por_impues DOUBLE   , am_pm VARCHAR ( 1 )  , cantidad_paciente INTEGER   , lunes_i TIME   , lunes_f TIME   , martes_i TIME   , martes_f TIME   , miercoles_i TIME   , miercoles_f TIME   , jueves_i TIME   , jueves_f TIME   , vienes_i TIME   , viernes_f TIME   , sabado_i TIME   , sabado_f TIME   , tiempo_paci INTEGER   , domingo_i TIME   , domingo_f TIME   , lunes VARCHAR ( 1 )  , martes VARCHAR ( 1 )  , miercoles VARCHAR ( 1 )  , jueves VARCHAR ( 1 )  , viernes VARCHAR ( 1 )  , sabado VARCHAR ( 1 )  , domingo VARCHAR ( 1 )  , feriado VARCHAR ( 100 )  , cedula VARCHAR ( 20 )  , min_salud VARCHAR ( 20 )  , col_med VARCHAR ( 20 )  , cita_previa VARCHAR ( 1 )  , telefono VARCHAR ( 20 )  , cobra_honorarios VARCHAR ( 1 )  , por_cobranza DOUBLE   , por_retención_seg DOUBLE   , por_retención_part DOUBLE   , accionista VARCHAR ( 1 )  , consultorio VARCHAR ( 10 )  , contrasena VARCHAR ( 20 )  , paga_iva VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examen_fisico
+CREATE TABLE examen_fisico ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , cardiopulmonal MEDIUMTEXT   , abdomen MEDIUMTEXT   , extremidades MEDIUMTEXT   , otros MEDIUMTEXT   , electrocardiograma MEDIUMTEXT   , rx_de_torax MEDIUMTEXT   , laboratorio MEDIUMTEXT   , riesgo_operatorio MEDIUMTEXT   , sugerencias MEDIUMTEXT   , piel_mucosas MEDIUMTEXT   , orl MEDIUMTEXT   , cabeza MEDIUMTEXT   , cuello_tiroides MEDIUMTEXT   , vascular MEDIUMTEXT   , neurologico MEDIUMTEXT   , otro MEDIUMTEXT   , torax MEDIUMTEXT   , mucosas MEDIUMTEXT   , genera MEDIUMTEXT   , ojo_de MEDIUMTEXT   , boca_de MEDIUMTEXT   , pelvis MEDIUMTEXT   , genitales MEDIUMTEXT   , brazos MEDIUMTEXT   , piernas MEDIUMTEXT   , fisico_resumen MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examen_fisico_nuevo
+CREATE TABLE examen_fisico_nuevo ( historia DOUBLE   , consulta DOUBLE   , talla INTEGER   , peso INTEGER   , mamas MEDIUMTEXT   , tiroides MEDIUMTEXT   , abdomen MEDIUMTEXT   , extremidades MEDIUMTEXT   , cardiopulmonar MEDIUMTEXT   , genitales_externos MEDIUMTEXT   , especulos MEDIUMTEXT   , tacto_vaginal MEDIUMTEXT   , tacto_rectal MEDIUMTEXT   , colposcopia MEDIUMTEXT   , tension VARCHAR ( 8 )  , general1 MEDIUMTEXT   , neurologico MEDIUMTEXT   , mama_derecha MEDIUMTEXT   , total_g MEDIUMTEXT   , total_f MEDIUMTEXT   , total_general MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examen_obs
+CREATE TABLE examen_obs ( numhistoria DOUBLE   , numconsulta DOUBLE   , observacion MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examen_paciente
+CREATE TABLE examen_paciente ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codeexamen VARCHAR ( 8 )  , resultado VARCHAR ( 30 )  , vinculante VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examen_pareja
+CREATE TABLE examen_pareja ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codeexamen VARCHAR ( 8 )  , orden INTEGER   , cedula VARCHAR ( 10 )  , nombre VARCHAR ( 200 )  , procedencia VARCHAR ( 4 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examenes
+CREATE TABLE examenes ( codeexamen VARCHAR ( 8 )  , examen VARCHAR ( 45 )  , codetipo VARCHAR ( 10 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   examenes_paciente_consulta
+CREATE TABLE examenes_paciente_consulta ( hhistoria DOUBLE   , hconsulta DOUBLE   , peso DOUBLE   , talla DOUBLE   , urea DOUBLE   , cr DOUBLE   , sodio DOUBLE   , potasio DOUBLE   , cloro DOUBLE   , fecha DATETIME   , calcio DOUBLE   , fosforo DOUBLE   , magnesio DOUBLE   , paratohormona DOUBLE   , ferritina DOUBLE   , trasferrina DOUBLE   , proteinuria DOUBLE   , depuracion_creatinina DOUBLE   , ac_urico_u DOUBLE   , amonio DOUBLE   , hierro_serico DOUBLE   , folato DOUBLE   , creatinina_u DOUBLE   , sodio_u DOUBLE   , potasio_u DOUBLE   , cloro_u DOUBLE   , fosforo_u DOUBLE   , magnesio_u DOUBLE   , citrato_u DOUBLE   , oxelato_u DOUBLE   , albumina_u DOUBLE   , calcio_u DOUBLE   , g_v_ph DOUBLE   , g_v_pco2 DOUBLE   , g_v_hco3 DOUBLE   , g_v_eb DOUBLE   , ac_urico_serico DOUBLE   , hb DOUBLE   , hto DOUBLE   , hb_glicosilada DOUBLE   , triglicerido DOUBLE   , colesterol DOUBLE   , creatinina_s DOUBLE   , v_urina DOUBLE   , creatinina_u_24 DOUBLE   , sodio_u_24 DOUBLE   , fosforo_u_24 DOUBLE   , cloro_u_24 DOUBLE   , calcio_u_24 DOUBLE   , aci_urico_u_24 DOUBLE   , potasio_u_24 DOUBLE   , oxato_u_24 DOUBLE   , citrato_u_24 DOUBLE   , ac_urico DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   facdetalles
+CREATE TABLE facdetalles ( id_factura VARCHAR ( 10 )  , consec VARCHAR ( 4 )  , id_producto VARCHAR ( 5 )  , cantidad INTEGER   , preciounidad DOUBLE   , precioinvent DOUBLE   , desct DOUBLE   , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , indesp VARCHAR ( 1 )  , cantdpdevolv INTEGER   , cantdadevolv INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   factrabajos
+CREATE TABLE factrabajos ( id_factura VARCHAR ( 10 )  , consec VARCHAR ( 4 )  , especif VARCHAR ( 30 )  , detall VARCHAR ( 200 )  , cantidad INTEGER   , preciounidad DOUBLE   , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , cantdpdevolv INTEGER   , cantdadevolv INTEGER   , montoiva DOUBLE   , unidad VARCHAR ( 50 )  , refprod VARCHAR ( 100 )  , id_producto VARCHAR ( 5 )  , precio_original DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   factura_cliente
+CREATE TABLE factura_cliente ( numfactura INTEGER   , cedu_rif VARCHAR ( 15 )  , fecha_factura DATETIME   , fecha_vence_fact DATETIME   , fecha_cance_fact DATETIME   , cliente VARCHAR ( 2 )  , status_factura VARCHAR ( 1 )  , tipo_factura VARCHAR ( 1 )  , paciente VARCHAR ( 10 )  , nom_paciente VARCHAR ( 60 )  , tipo_precio VARCHAR ( 1 )  , nro_orden VARCHAR ( 10 )  , total_costo DOUBLE   , total_neto DOUBLE   , total_bruto DOUBLE   , total_final DOUBLE   , total_descuento DOUBLE   , descuento_linea DOUBLE   , notas MEDIUMTEXT   , hora_documento TIME   , monto_pac DOUBLE   , monto_emp DOUBLE   , numero_consulta INTEGER   , numero_historia INTEGER   , tipo_doc VARCHAR ( 3 )  , medico INTEGER   , nro_cxp DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   facturas
+CREATE TABLE facturas ( id_factura VARCHAR ( 10 )  , id_cliente DOUBLE   , monto DOUBLE   , fecha TIMESTAMP NULL DEFAULT NULL    , montoiva DOUBLE   , desct DOUBLE   , descuento DOUBLE   , montototal DOUBLE   , impuesto DOUBLE   , faproba TIMESTAMP NULL DEFAULT NULL    , status VARCHAR ( 1 )  , id_vendedor VARCHAR ( 3 )  , diasp INTEGER   , fpagoestmd TIMESTAMP NULL DEFAULT NULL    , nocontrol VARCHAR ( 15 )  , observa VARCHAR ( 70 )  , fpagoreal TIMESTAMP NULL DEFAULT NULL    , npago VARCHAR ( 10 )  , faux1 TIMESTAMP NULL DEFAULT NULL    , faux2 TIMESTAMP NULL DEFAULT NULL    , faux3 TIMESTAMP NULL DEFAULT NULL    , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , retencion DOUBLE   , id_orden VARCHAR ( 20 )  , porcretiva DOUBLE   , retencioniva DOUBLE   , porcretalcd DOUBLE   , retencionalcd DOUBLE   , id_presupuesto VARCHAR ( 10 )  , nrocontroln VARCHAR ( 20 )  , gastoenvio DOUBLE   , tipoimp VARCHAR ( 1 )  , precio_original DOUBLE   , nro_origen VARCHAR ( 10 )  , nro_pedweb VARCHAR ( 10 )  , id_tipo_persona VARCHAR ( 20 )  , nro_batch VARCHAR ( 30 )  , nro_asegurado VARCHAR ( 30 )  , nro_ficha VARCHAR ( 30 )  , co_ref_historia VARCHAR ( 20 )  , co_ref_id VARCHAR ( 20 )  , historia DOUBLE   , codesegemp VARCHAR ( 20 )  , telefono1 VARCHAR ( 30 )  , telefono2 VARCHAR ( 30 )  , celular VARCHAR ( 30 )  , comentario VARCHAR ( 255 )  , id_estado DOUBLE   , id_ciudad DOUBLE   , id_region DOUBLE   , in_tipo_factura DOUBLE   , historia_avalado DOUBLE   , historia_autorizado DOUBLE   , pc_cliente DOUBLE   , pc_empresa DOUBLE   , mo_cliente DOUBLE   , mo_empresa DOUBLE   , id_proveedor VARCHAR ( 20 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   facturas_compras
+CREATE TABLE facturas_compras ( id_factura_compra DOUBLE   , cod_prov VARCHAR ( 6 )  , id_tipo_concepto VARCHAR ( 4 )  , fecha DATETIME   , estado VARCHAR ( 1 )  , nro_seniat VARCHAR ( 25 )  , nro_factura VARCHAR ( 25 )  , mto_neto DOUBLE   , mto_porc_iva DOUBLE   , mto_iva DOUBLE   , mto_porc_ret_iva DOUBLE   , mto_ret_iva DOUBLE   , mto_porc_ret_isrl DOUBLE   , mto_ret_isrl DOUBLE   , mto_total_general DOUBLE   , nro_cxp DOUBLE   , mto_total DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   facturas_compras_detalle
+CREATE TABLE facturas_compras_detalle ( id_registro DOUBLE   , id_fac_prov VARCHAR ( 6 )  , des_concepto VARCHAR ( 100 )  , cantidad DOUBLE   , monto DOUBLE   , monto_total DOUBLE   , id_factura_compra DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   facturas_estados
+CREATE TABLE facturas_estados ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   familia
+CREATE TABLE familia ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   familia_bebe
+CREATE TABLE familia_bebe ( familia DOUBLE   , familia_texto MEDIUMTEXT   , ced_representante VARCHAR ( 10 )  , nom_padre VARCHAR ( 120 )  , nom_madre VARCHAR ( 120 )  , fecn_padre DATETIME   , fecn_madre DATETIME   , ocupa_padre VARCHAR ( 60 )  , ocupa_madre VARCHAR ( 60 )  , situacion_pareja VARCHAR ( 1 )  , dinamica_familiar MEDIUMTEXT   , localidad VARCHAR ( 200 )  , direccion MEDIUMTEXT   , celu_madre VARCHAR ( 12 )  , cel_padre VARCHAR ( 12 )  , telefono VARCHAR ( 12 )  , procedencia VARCHAR ( 2 )  , email VARCHAR ( 120 )  , fecha_ingreso DATETIME   , status VARCHAR ( 1 )  , medico INTEGER   , sms VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   formadepago
+CREATE TABLE formadepago ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   formato_print
+CREATE TABLE formato_print ( codigo VARCHAR ( 4 )  , titulo VARCHAR ( 200 )  , descripcion MEDIUMTEXT   , tipo VARCHAR ( 10 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_ca
+CREATE TABLE grafi_ca ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_cl
+CREATE TABLE grafi_cl ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_cr
+CREATE TABLE grafi_cr ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_de
+CREATE TABLE grafi_de ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_fe
+CREATE TABLE grafi_fe ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_fo
+CREATE TABLE grafi_fo ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_ma
+CREATE TABLE grafi_ma ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_pa
+CREATE TABLE grafi_pa ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_po
+CREATE TABLE grafi_po ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_pr
+CREATE TABLE grafi_pr ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_so
+CREATE TABLE grafi_so ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_tr
+CREATE TABLE grafi_tr ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafi_urea
+CREATE TABLE grafi_urea ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , medida VARCHAR ( 20 )  , valor DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_brazo
+CREATE TABLE grafica_brazo ( historia DOUBLE   , edad DOUBLE   , brazo DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_circunferencia_c
+CREATE TABLE grafica_circunferencia_c ( historia DOUBLE   , edad DOUBLE   , circunferencia DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_imc
+CREATE TABLE grafica_imc ( historia DOUBLE   , edad DOUBLE   , imc DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_peso
+CREATE TABLE grafica_peso ( historia DOUBLE   , edad DOUBLE   , peso DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_peso_talla
+CREATE TABLE grafica_peso_talla ( historia DOUBLE   , talla DOUBLE   , peso DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_presio_d
+CREATE TABLE grafica_presio_d ( historia DOUBLE   , edad DOUBLE   , presion_d DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_presio_s
+CREATE TABLE grafica_presio_s ( historia DOUBLE   , edad DOUBLE   , presion_s DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_talla
+CREATE TABLE grafica_talla ( historia DOUBLE   , edad DOUBLE   , talla DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   grafica_talla_copy
+CREATE TABLE grafica_talla_copy ( historia DOUBLE   , edad DOUBLE   , talla DOUBLE   , medida VARCHAR ( 20 )  , fecha DATETIME   , sexo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   hibernate_sequence
+CREATE TABLE hibernate_sequence ( next_val DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   his_con_pre_factura
+CREATE TABLE his_con_pre_factura ( id_registro DOUBLE   , numhistoria DOUBLE   , nroconsulta DOUBLE   , codigo VARCHAR ( 8 )  , descripcion VARCHAR ( 45 )  , cantidad DOUBLE   , monto DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   hospitalizacion
+CREATE TABLE hospitalizacion ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , diagprev MEDIUMTEXT   , indiprev MEDIUMTEXT   , dieta MEDIUMTEXT   , habitacion VARCHAR ( 1 )  , hospital VARCHAR ( 60 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   imagen_consulta
+CREATE TABLE imagen_consulta ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , observacion MEDIUMTEXT   , imagen VARCHAR ( 256 )  , orden INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   imagen_pacientes
+CREATE TABLE imagen_pacientes ( nrohistoria DOUBLE   , imagen VARCHAR ( 256 )  , imagen2 VARCHAR ( 256 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   imagen_pacientes_2
+CREATE TABLE imagen_pacientes_2 ( nrohistoria INTEGER   , imagen VARCHAR ( 256 )  , imagen2 VARCHAR ( 256 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   impuestos
+CREATE TABLE impuestos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 100 )  , impuestofactor DOUBLE   , impuestosiglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   informe
+CREATE TABLE informe ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , para VARCHAR ( 50 )  , descripcion MEDIUMTEXT   , fe_cha DATETIME   , evalua_pre MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   intenven_servi
+CREATE TABLE intenven_servi ( codigo VARCHAR ( 3 )  , nombre VARCHAR ( 300 )  , precio_principal DOUBLE   , precio_auxiliar DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   interven_consulta
+CREATE TABLE interven_consulta ( historia DOUBLE   , consulta DOUBLE   , codigo_inter VARCHAR ( 3 )  , detalle MEDIUMTEXT   , descripcion VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   inventariodeproductos
+CREATE TABLE inventariodeproductos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , cantidad DOUBLE   , descripcion VARCHAR ( 200 )  , almacenes_id INTEGER   , producto_id INTEGER   ) 
+ 
+DROP TABLE   laboratorios
+CREATE TABLE laboratorios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   lampco
+CREATE TABLE lampco ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , seguro VARCHAR ( 100 )  , persno VARCHAR ( 50 )  , last_name VARCHAR ( 70 )  , first_name VARCHAR ( 70 )  , memb VARCHAR ( 60 )  , first_name1 VARCHAR ( 70 )  , last_name1 VARCHAR ( 70 )  , gender_key VARCHAR ( 70 )  , birth_date TIMESTAMP NULL DEFAULT NULL    , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ldirectorio
+CREATE TABLE ldirectorio ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , listado VARCHAR ( 255 )  , tipo VARCHAR ( 150 )  , nombre1 VARCHAR ( 100 )  , nombre VARCHAR ( 100 )  , ubicacion VARCHAR ( 100 )  , dirección VARCHAR ( 100 )  , telefonos VARCHAR ( 100 )  , correo_electronico VARCHAR ( 255 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   lemarathon
+CREATE TABLE lemarathon ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , nombre VARCHAR ( 150 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   listado
+CREATE TABLE listado ( tipo VARCHAR ( 5 )  , descripcion_tipo VARCHAR ( 30 )  , segundo VARCHAR ( 5 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   lmarathon
+CREATE TABLE lmarathon ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , seguro VARCHAR ( 100 )  , persno DOUBLE   , employee_name VARCHAR ( 150 )  , spouse VARCHAR ( 150 )  , childrens_names VARCHAR ( 150 )  , birth_date TIMESTAMP NULL DEFAULT NULL    , age VARCHAR ( 30 )  , column1 VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   lmss
+CREATE TABLE lmss ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , seguro VARCHAR ( 100 )  , persno VARCHAR ( 20 )  , last_name VARCHAR ( 70 )  , first_name VARCHAR ( 70 )  , memb VARCHAR ( 60 )  , first_name1 VARCHAR ( 70 )  , last_name1 VARCHAR ( 70 )  , gender_key VARCHAR ( 50 )  , birth_date TIMESTAMP NULL DEFAULT NULL    , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   log_errores
+CREATE TABLE log_errores ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , fe_error DATETIME   , co_ref_historia VARCHAR ( 20 )  , tx_sistema VARCHAR ( 50 )  , tx_modulo VARCHAR ( 50 )  , tx_usuario VARCHAR ( 50 )  , tx_estation VARCHAR ( 50 )  , tx_objecto VARCHAR ( 50 )  , tx_evento VARCHAR ( 50 )  , tx_linea VARCHAR ( 255 )  , tx_errnumber VARCHAR ( 50 )  , tx_texto VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   log_eventos
+CREATE TABLE log_eventos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , fe_evento DATETIME   , tx_sistema VARCHAR ( 50 )  , tx_modulo VARCHAR ( 50 )  , tx_menu VARCHAR ( 50 )  , tx_opcion VARCHAR ( 50 )  , tx_accion VARCHAR ( 50 )  , tx_usuario VARCHAR ( 50 )  , tx_estation VARCHAR ( 50 )  , tx_evento VARCHAR ( 150 )  , tx_texto VARCHAR ( 255 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   lproductos
+CREATE TABLE lproductos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , familia_1 VARCHAR ( 100 )  , familia_2 VARCHAR ( 100 )  , referencia VARCHAR ( 20 )  , producto VARCHAR ( 100 )  , presentacion VARCHAR ( 80 )  , dosificacion VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   maestro
+CREATE TABLE maestro ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , datefecha TIMESTAMP NULL DEFAULT NULL    , numdedocumento INTEGER   , intipodemaestro VARCHAR ( 20 )  , almecen_id INTEGER   , personas_id INTEGER   , status_id INTEGER   ) 
+ 
+DROP TABLE   maestrodetalle
+CREATE TABLE maestrodetalle ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , caarticulos INTEGER   , moprecio DOUBLE   , mosubtotal DOUBLE   , nuorden INTEGER   , maestro_id INTEGER   , productos_id INTEGER   ) 
+ 
+DROP TABLE   monedas
+CREATE TABLE monedas ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 100 )  , modenafactor DOUBLE   , monedasiglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   motivo_cita
+CREATE TABLE motivo_cita ( codigo VARCHAR ( 10 )  , tipo_atencion VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   motivo_consulta_paciente
+CREATE TABLE motivo_consulta_paciente ( codemotivo VARCHAR ( 4 )  , nrohistoria DOUBLE   , nroconsulta DOUBLE   , descripcion VARCHAR ( 50 )  , detalle VARCHAR ( 300 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   motivo_factura
+CREATE TABLE motivo_factura ( codigo VARCHAR ( 8 )  , descripcion VARCHAR ( 45 )  , monto DOUBLE   , monto_seg DOUBLE   , tipo VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   motivo_factura_prov
+CREATE TABLE motivo_factura_prov ( id_fac_prov VARCHAR ( 6 )  , des_concepto VARCHAR ( 100 )  , monto DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   motivos_consulta
+CREATE TABLE motivos_consulta ( codemotivo VARCHAR ( 4 )  , descripcion VARCHAR ( 40 )  , tipo VARCHAR ( 2 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   motivosc
+CREATE TABLE motivosc ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   nctaxcobrar
+CREATE TABLE nctaxcobrar ( id_renglon VARCHAR ( 20 )  , cliente VARCHAR ( 6 )  , historia DOUBLE   , historia_avalado DOUBLE   , historia_autorizado DOUBLE   , codesegemp VARCHAR ( 20 )  , fecha TIMESTAMP NULL DEFAULT NULL    , fdocum TIMESTAMP NULL DEFAULT NULL    , id_docum VARCHAR ( 2 )  , documento VARCHAR ( 30 )  , concepto VARCHAR ( 3 )  , control VARCHAR ( 15 )  , monto DOUBLE   , saldo DOUBLE   , diasp INTEGER   , fvencimiento TIMESTAMP NULL DEFAULT NULL    , tipo VARCHAR ( 1 )  , referencia VARCHAR ( 20 )  , status VARCHAR ( 1 )  , faux1 TIMESTAMP NULL DEFAULT NULL    , faux2 TIMESTAMP NULL DEFAULT NULL    , faux3 TIMESTAMP NULL DEFAULT NULL    , acancelar DOUBLE   , retencion DOUBLE   , retencioniva DOUBLE   , porcliente DOUBLE   , porempresa DOUBLE   , clase VARCHAR ( 1 )  , retencionalcd DOUBLE   , montoiva DOUBLE   , porciva DOUBLE   , porcretiva DOUBLE   , porcretalcd DOUBLE   , porcretrent DOUBLE   , montob DOUBLE   , comprobante VARCHAR ( 9 )  , nrocomprobante VARCHAR ( 20 )  , in_tipo DOUBLE   , id_proveedor DOUBLE   , nro_origen VARCHAR ( 20 )  , nu_factura VARCHAR ( 30 )  , in_tipo_fac DOUBLE   , mo_empresa DOUBLE   , mo_cliente DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   nctaxpagar
+CREATE TABLE nctaxpagar ( id_renglon VARCHAR ( 7 )  , cliente VARCHAR ( 6 )  , fecha TIMESTAMP NULL DEFAULT NULL    , fdocum TIMESTAMP NULL DEFAULT NULL    , id_docum VARCHAR ( 4 )  , documento VARCHAR ( 30 )  , concepto VARCHAR ( 4 )  , control VARCHAR ( 15 )  , monto DOUBLE   , saldo DOUBLE   , diasp INTEGER   , fvencimiento TIMESTAMP NULL DEFAULT NULL    , tipo VARCHAR ( 1 )  , referencia VARCHAR ( 20 )  , status VARCHAR ( 1 )  , faux1 TIMESTAMP NULL DEFAULT NULL    , faux2 TIMESTAMP NULL DEFAULT NULL    , faux3 TIMESTAMP NULL DEFAULT NULL    , acancelar DOUBLE   , retencion DOUBLE   , retencioniva DOUBLE   , iva DOUBLE   , clase VARCHAR ( 1 )  , retencionalcd DOUBLE   , montoiva DOUBLE   , porciva DOUBLE   , porcretiva DOUBLE   , porcretalcd DOUBLE   , porcretrent DOUBLE   , montob DOUBLE   , comprobante VARCHAR ( 9 )  , nrofactura VARCHAR ( 20 )  , fcomprobante TIMESTAMP NULL DEFAULT NULL    , id_retencion VARCHAR ( 2 )  , id_persona VARCHAR ( 2 )  , serie VARCHAR ( 5 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   operadores
+CREATE TABLE operadores ( primera VARCHAR ( 15 )  , segunda VARCHAR ( 10 )  , nonbre VARCHAR ( 50 )  , nivel VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ordenes_m
+CREATE TABLE ordenes_m ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , nuhistoria DOUBLE   , fe_registro TIMESTAMP NULL DEFAULT NULL    , tx_ordenes VARCHAR ( 200 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ortopedia
+CREATE TABLE ortopedia ( nrohistoria INTEGER   , nroconsulta INTEGER   , botas VARCHAR ( 1 )  , zapatos VARCHAR ( 1 )  , soporte VARCHAR ( 6 )  , thomas VARCHAR ( 8 )  , normal VARCHAR ( 1 )  , tacon_int VARCHAR ( 5 )  , tacon_ext VARCHAR ( 5 )  , suela_int VARCHAR ( 5 )  , suela_ext VARCHAR ( 5 )  , borde_int_rect VARCHAR ( 1 )  , borde_int_abdu VARCHAR ( 1 )  , suela_normal VARCHAR ( 1 )  , suela_antirres VARCHAR ( 1 )  , aparatos VARCHAR ( 20 )  , observacion MEDIUMTEXT   , plantilla VARCHAR ( 1 )  , aae VARCHAR ( 15 )  , api VARCHAR ( 7 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   p0
+CREATE TABLE p0 ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , tx_dato VARCHAR ( 50 )  ) 
+ 
+DROP TABLE   p1
+CREATE TABLE p1 ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , tipo VARCHAR ( 10 )  , orden INTEGER   , fe_inicio DATETIME   , fe_fin DATETIME   ) 
+ 
+DROP TABLE   paciente_chamo
+CREATE TABLE paciente_chamo ( familia DOUBLE   , historia DOUBLE   , cedula VARCHAR ( 10 )  , nombre VARCHAR ( 200 )  , sexo VARCHAR ( 1 )  , f_nacimiento DATETIME   , l_nacimiento MEDIUMTEXT   , representante VARCHAR ( 10 )  , f_ingreso DATETIME   , escolaridad VARCHAR ( 100 )  , segu_empre VARCHAR ( 2 )  , foto_paciente VARCHAR ( 400 )  , celular VARCHAR ( 12 )  , email VARCHAR ( 120 )  , nota_general MEDIUMTEXT   , alergia MEDIUMTEXT   , notas MEDIUMTEXT   , medico INTEGER   , pediatrico VARCHAR ( 1 )  , vacunas VARCHAR ( 1 )  , sitio VARCHAR ( 1 )  , medio VARCHAR ( 1 )  , medio_publi VARCHAR ( 100 )  , medio_otro VARCHAR ( 100 )  , co_ref_historia VARCHAR ( 20 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   paciente_no_regi
+CREATE TABLE paciente_no_regi ( registro DOUBLE   , apellidos VARCHAR ( 100 )  , nombres VARCHAR ( 100 )  , celular VARCHAR ( 30 )  , motivo VARCHAR ( 10 )  , fecha DATETIME   , medico INTEGER   , registrado VARCHAR ( 1 )  , hora TIME   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pacientes
+CREATE TABLE pacientes ( nac VARCHAR ( 1 )  , cedula VARCHAR ( 8 )  , apellidos VARCHAR ( 255 )  , nombres VARCHAR ( 255 )  , sexo VARCHAR ( 1 )  , fnacimiento DATETIME   , lnacimiento VARCHAR ( 100 )  , codeestado VARCHAR ( 1 )  , direccion VARCHAR ( 200 )  , telefono VARCHAR ( 20 )  , fingreso DATETIME   , escolaridad VARCHAR ( 100 )  , ocupacion VARCHAR ( 100 )  , codesegemp VARCHAR ( 3 )  , numhistoria DOUBLE   , foto_pac VARCHAR ( 300 )  , profesion VARCHAR ( 50 )  , email VARCHAR ( 100 )  , dependencia VARCHAR ( 30 )  , medico INTEGER   , sms VARCHAR ( 1 )  , dependencia_tra VARCHAR ( 80 )  , cargo VARCHAR ( 80 )  , tipo_emp VARCHAR ( 80 )  , co_ref_historia VARCHAR ( 20 )  , in_tipo_paciente INTEGER   , in_empleado INTEGER   , id_tipodecliente INTEGER   , id_motivo_cita VARCHAR ( 5 )  , co_ref_id VARCHAR ( 30 )  , id_estado DOUBLE   , id_ciudad DOUBLE   , id_region DOUBLE   , nro_batch VARCHAR ( 30 )  , nro_asegurado VARCHAR ( 30 )  , telefono2 VARCHAR ( 30 )  , nro_ficha VARCHAR ( 30 )  , id_tipo_persona DOUBLE   , id_departamentos DOUBLE   , id_cargos DOUBLE   , id_tipo_de_personal DOUBLE   , codigo_biometrico VARCHAR ( 30 )  , fe_ingreso_emp DATETIME   , fe_1er_contrato DATETIME   , nro_cuenta VARCHAR ( 50 )  , nro_clave VARCHAR ( 20 )  , id_cliente_respondable DOUBLE   , in_depurado DOUBLE   , id_barrio DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pacientes_detalles
+CREATE TABLE pacientes_detalles ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , tipo VARCHAR ( 10 )  , orden INTEGER   , fe_inicio DATETIME   , fe_fin DATETIME   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pacientes_detalles2
+CREATE TABLE pacientes_detalles2 ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , tipo VARCHAR ( 10 )  , orden INTEGER   , fe_inicio DATETIME   , fe_fin DATETIME   ) 
+ 
+DROP TABLE   pacientes_eventos
+CREATE TABLE pacientes_eventos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , historia DOUBLE   , nu_orden DOUBLE   , fe_evento TIMESTAMP NULL DEFAULT NULL    , id_producto VARCHAR ( 5 )  , mo_precio DOUBLE   , in_estado INTEGER   , id_factura VARCHAR ( 10 )  , in_sel INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pacientes_vacuven
+CREATE TABLE pacientes_vacuven ( histo DOUBLE   , nombre_1 VARCHAR ( 200 )  , nombre_2 VARCHAR ( 200 )  , correo VARCHAR ( 200 )  , empresa VARCHAR ( 200 )  , codigo_empresa VARCHAR ( 10 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pago_quiru
+CREATE TABLE pago_quiru ( cod_pagos INTEGER   , consecuti INTEGER   , fecha DATETIME   , monto_total DOUBLE   , abono DOUBLE   , resta DOUBLE   , pago VARCHAR ( 1 )  , hora_pago TIME   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pagos
+CREATE TABLE pagos ( id_pagos DOUBLE   , clase VARCHAR ( 1 )  , id_renglon VARCHAR ( 7 )  , consecutivo VARCHAR ( 5 )  , id_forma_pago DOUBLE   , fecha TIMESTAMP NULL DEFAULT NULL    , status VARCHAR ( 1 )  , id_fpago VARCHAR ( 1 )  , id_tipop VARCHAR ( 2 )  , pdocum VARCHAR ( 30 )  , pbanco VARCHAR ( 2 )  , clave VARCHAR ( 20 )  , monto DOUBLE   , impuesto DOUBLE   , montoiva DOUBLE   , movimiento VARCHAR ( 6 )  , cuenta VARCHAR ( 30 )  , banco VARCHAR ( 2 )  , operador VARCHAR ( 30 )  , id_cliente VARCHAR ( 6 )  , id_proveedor VARCHAR ( 6 )  , referencia VARCHAR ( 20 )  , id_caja VARCHAR ( 4 )  , id_seccion VARCHAR ( 8 )  , id_boveda VARCHAR ( 3 )  , saldoa DOUBLE   , saldod DOUBLE   , movcaja VARCHAR ( 6 )  , saldodp DOUBLE   , pagocliente VARCHAR ( 7 )  , cuentar VARCHAR ( 7 )  , docafecr VARCHAR ( 20 )  , nopagor VARCHAR ( 7 )  , controlr VARCHAR ( 15 )  , in_tipoc DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   parametrosgenerales
+CREATE TABLE parametrosgenerales ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , sinificado VARCHAR ( 100 )  , valor VARCHAR ( 50 )  , modulo VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   parametrosusuarios
+CREATE TABLE parametrosusuarios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , sinificado VARCHAR ( 100 )  , valor VARCHAR ( 50 )  , proyectosmodulos_id INTEGER   ) 
+ 
+DROP TABLE   pbcatcol
+CREATE TABLE pbcatcol ( pbc_tnam VARCHAR ( 65 )  , pbc_tid INTEGER   , pbc_ownr VARCHAR ( 65 )  , pbc_cnam VARCHAR ( 65 )  , pbc_cid SMALLINT   , pbc_labl VARCHAR ( 254 )  , pbc_lpos SMALLINT   , pbc_hdr VARCHAR ( 254 )  , pbc_hpos SMALLINT   , pbc_jtfy SMALLINT   , pbc_mask VARCHAR ( 31 )  , pbc_case SMALLINT   , pbc_hght SMALLINT   , pbc_wdth SMALLINT   , pbc_ptrn VARCHAR ( 31 )  , pbc_bmap VARCHAR ( 1 )  , pbc_init VARCHAR ( 254 )  , pbc_cmnt VARCHAR ( 254 )  , pbc_edit VARCHAR ( 31 )  , pbc_tag VARCHAR ( 254 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pbcatedt
+CREATE TABLE pbcatedt ( pbe_name VARCHAR ( 30 )  , pbe_edit VARCHAR ( 254 )  , pbe_type SMALLINT   , pbe_cntr INTEGER   , pbe_seqn SMALLINT   , pbe_flag INTEGER   , pbe_work VARCHAR ( 32 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pbcatfmt
+CREATE TABLE pbcatfmt ( pbf_name VARCHAR ( 30 )  , pbf_frmt VARCHAR ( 254 )  , pbf_type SMALLINT   , pbf_cntr INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pbcattbl
+CREATE TABLE pbcattbl ( pbt_tnam VARCHAR ( 65 )  , pbt_tid INTEGER   , pbt_ownr VARCHAR ( 65 )  , pbd_fhgt SMALLINT   , pbd_fwgt SMALLINT   , pbd_fitl VARCHAR ( 1 )  , pbd_funl VARCHAR ( 1 )  , pbd_fchr SMALLINT   , pbd_fptc SMALLINT   , pbd_ffce VARCHAR ( 18 )  , pbh_fhgt SMALLINT   , pbh_fwgt SMALLINT   , pbh_fitl VARCHAR ( 1 )  , pbh_funl VARCHAR ( 1 )  , pbh_fchr SMALLINT   , pbh_fptc SMALLINT   , pbh_ffce VARCHAR ( 18 )  , pbl_fhgt SMALLINT   , pbl_fwgt SMALLINT   , pbl_fitl VARCHAR ( 1 )  , pbl_funl VARCHAR ( 1 )  , pbl_fchr SMALLINT   , pbl_fptc SMALLINT   , pbl_ffce VARCHAR ( 18 )  , pbt_cmnt VARCHAR ( 254 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pbcatvld
+CREATE TABLE pbcatvld ( pbv_name VARCHAR ( 30 )  , pbv_vald VARCHAR ( 254 )  , pbv_type SMALLINT   , pbv_cntr INTEGER   , pbv_msg VARCHAR ( 254 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentil_nina
+CREATE TABLE percentil_nina ( peso_b DOUBLE   , peso_m DOUBLE   , peso_a DOUBLE   , talla_b DOUBLE   , talla_m DOUBLE   , talla_a DOUBLE   , cefalica_b DOUBLE   , cefalica_m DOUBLE   , cefalica_a DOUBLE   , brazo_b DOUBLE   , brazo_m DOUBLE   , brazo_a DOUBLE   , edad_ini_dia INTEGER   , edad_fin_dia INTEGER   , edad_texto VARCHAR ( 100 )  , edad_meses INTEGER   , anos DOUBLE   , imc_b DOUBLE   , imc_m DOUBLE   , imc_a DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentil_nino
+CREATE TABLE percentil_nino ( peso_b DOUBLE   , peso_m DOUBLE   , peso_a DOUBLE   , talla_b DOUBLE   , talla_m DOUBLE   , talla_a DOUBLE   , cefalica_b DOUBLE   , cefalica_m DOUBLE   , cefalica_a DOUBLE   , brazo_b DOUBLE   , brazo_m DOUBLE   , brazo_a DOUBLE   , edad_ini_dia INTEGER   , edad_fin_dia INTEGER   , edad_texto VARCHAR ( 100 )  , edad_meses INTEGER   , anos DOUBLE   , imc_b DOUBLE   , imc_m DOUBLE   , imc_a DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentil_pa_diast_m
+CREATE TABLE percentil_pa_diast_m ( tres DOUBLE   , diez DOUBLE   , veinte_5 DOUBLE   , cincuenta DOUBLE   , setenta_5 DOUBLE   , noventa DOUBLE   , noventa_7 DOUBLE   , cefalica_m DOUBLE   , cefalica_a DOUBLE   , sexo VARCHAR ( 1 )  , edad_ini_dia INTEGER   , edad_fin_dia INTEGER   , edad_texto VARCHAR ( 100 )  , edad_meses INTEGER   , anos DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentil_pa_sisto_m
+CREATE TABLE percentil_pa_sisto_m ( tres DOUBLE   , diez DOUBLE   , veinte_5 DOUBLE   , cincuenta DOUBLE   , setenta_5 DOUBLE   , noventa DOUBLE   , noventa_7 DOUBLE   , cefalica_m DOUBLE   , cefalica_a DOUBLE   , sexo VARCHAR ( 1 )  , edad_ini_dia INTEGER   , edad_fin_dia INTEGER   , edad_texto VARCHAR ( 100 )  , edad_meses INTEGER   , anos DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentil_pulso_a_m
+CREATE TABLE percentil_pulso_a_m ( tres DOUBLE   , diez DOUBLE   , veinte_5 DOUBLE   , cincuenta DOUBLE   , setenta_5 DOUBLE   , noventa DOUBLE   , noventa_7 DOUBLE   , sexo VARCHAR ( 1 )  , edad_ini_dia INTEGER   , edad_fin_dia INTEGER   , edad_texto VARCHAR ( 100 )  , edad_meses INTEGER   , anos DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   percentiles_paciente
+CREATE TABLE percentiles_paciente ( hhistoria DOUBLE   , hconsulta DOUBLE   , peso DOUBLE   , talla DOUBLE   , c_cefalica DOUBLE   , c_brazo DOUBLE   , pulso DOUBLE   , p_a_sistolica DOUBLE   , p_a_diastolica DOUBLE   , fecha DATETIME   , imc DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   personas
+CREATE TABLE personas ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , description VARCHAR ( 200 )  , razonsocial VARCHAR ( 200 )  , numerorif VARCHAR ( 30 )  , numeronit INTEGER   , direccion1 VARCHAR ( 150 )  , direccion2 VARCHAR ( 150 )  , numerotelefono1 INTEGER   , numerotelefono2 INTEGER   , intipodepersona VARCHAR ( 20 )  , tipodepersona_id INTEGER   ) 
+ 
+DROP TABLE   pre_aneste
+CREATE TABLE pre_aneste ( historia DOUBLE   , consulta DOUBLE   , tipo VARCHAR ( 1 )  , resultado VARCHAR ( 200 )  , emergencia VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_espec
+CREATE TABLE pre_espec ( historia DOUBLE   , consulta DOUBLE   , tipo VARCHAR ( 1 )  , resultado MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_espiro
+CREATE TABLE pre_espiro ( historia DOUBLE   , consulta DOUBLE   , tipo VARCHAR ( 1 )  , resultado VARCHAR ( 200 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_infec
+CREATE TABLE pre_infec ( historia DOUBLE   , consulta DOUBLE   , tipo VARCHAR ( 1 )  , resultado MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_natal_desarrollo_fino
+CREATE TABLE pre_natal_desarrollo_fino ( historia DOUBLE   , fecha DATETIME   , eg_fur VARCHAR ( 20 )  , eg_eco VARCHAR ( 20 )  , peso VARCHAR ( 5 )  , ta VARCHAR ( 7 )  , au VARCHAR ( 5 )  , mf VARCHAR ( 20 )  , presentacion VARCHAR ( 20 )  , edemas VARCHAR ( 20 )  , dbp VARCHAR ( 5 )  , lf VARCHAR ( 20 )  , ac_cardiaca VARCHAR ( 20 )  , la VARCHAR ( 20 )  , sg_cri VARCHAR ( 5 )  , plac_grado VARCHAR ( 20 )  , gesta_clave INTEGER   , consulta DOUBLE   , femur VARCHAR ( 5 )  , lcc VARCHAR ( 5 )  , dbpf VARCHAR ( 5 )  , varice VARCHAR ( 5 )  , peso_fetal VARCHAR ( 5 )  , foco_f VARCHAR ( 5 )  , multiple VARCHAR ( 1 )  , cantidad INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_natal_observaciones
+CREATE TABLE pre_natal_observaciones ( historia DOUBLE   , fur DATETIME   , menarquia VARCHAR ( 10 )  , gestas INTEGER   , parto VARCHAR ( 10 )  , tipiaje VARCHAR ( 10 )  , observaciones MEDIUMTEXT   , tipiaje_cony VARCHAR ( 10 )  , gesta_clave INTEGER   , partos INTEGER   , cesarea INTEGER   , abortos INTEGER   , otros INTEGER   , final VARCHAR ( 1 )  , multiple VARCHAR ( 1 )  , cantidad INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   pre_trombo
+CREATE TABLE pre_trombo ( historia DOUBLE   , consulta DOUBLE   , tipo VARCHAR ( 1 )  , resultado MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   prena_exames_b
+CREATE TABLE prena_exames_b ( historia DOUBLE   , fecha DATETIME   , gesta_clave INTEGER   , hemoglobina VARCHAR ( 5 )  , hematoc VARCHAR ( 5 )  , glob_blanco VARCHAR ( 5 )  , neut_linf VARCHAR ( 5 )  , vsg VARCHAR ( 5 )  , plaquetas VARCHAR ( 5 )  , glicemia_basal VARCHAR ( 5 )  , glicemia_post_prandial VARCHAR ( 5 )  , insulina_basal VARCHAR ( 5 )  , insulina_post_prandial VARCHAR ( 5 )  , urea VARCHAR ( 5 )  , creatinina VARCHAR ( 5 )  , ac_urico VARCHAR ( 5 )  , triglicer VARCHAR ( 5 )  , colesterol VARCHAR ( 5 )  , hdl_colest VARCHAR ( 5 )  , ldl_colest VARCHAR ( 5 )  , hiv VARCHAR ( 1 )  , vdrl VARCHAR ( 1 )  , orina MEDIUMTEXT   , urocultivo VARCHAR ( 1 )  , heces MEDIUMTEXT   , t3 VARCHAR ( 5 )  , t4 VARCHAR ( 5 )  , tsh VARCHAR ( 5 )  , fsh VARCHAR ( 5 )  , lh VARCHAR ( 5 )  , estradiol VARCHAR ( 5 )  , progester VARCHAR ( 5 )  , prolactina VARCHAR ( 5 )  , toxo_igm VARCHAR ( 1 )  , toxo_igg VARCHAR ( 1 )  , otros MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   presupuesto_operatorio
+CREATE TABLE presupuesto_operatorio ( documento INTEGER   , historia DOUBLE   , diagnostico VARCHAR ( 300 )  , intervencion VARCHAR ( 100 )  , ayudantes INTEGER   , dias_hospi INTEGER   , arco_c VARCHAR ( 1 )  , astroscopio VARCHAR ( 1 )  , sangre_qx_tipo_1 VARCHAR ( 40 )  , sangre_qx_tipo_2 VARCHAR ( 10 )  , sangre_qx_tipo_1_cantidad DOUBLE   , sangre_qx_tipo_2_cantidad DOUBLE   , material_sintesis DOUBLE   , instrumental_traumatologico DOUBLE   , honorarios DOUBLE   , observaciones MEDIUMTEXT   , fecha DATETIME   , estado VARCHAR ( 1 )  , clinica VARCHAR ( 3 )  , procedencia VARCHAR ( 3 )  , horas_quirofano INTEGER   , rx_torax VARCHAR ( 1 )  , rx_postoperatoria VARCHAR ( 1 )  , fluoroscopio VARCHAR ( 1 )  , eval_preoperatoria VARCHAR ( 1 )  , otros_estudios_de_imagenes VARCHAR ( 100 )  , interconsultas VARCHAR ( 100 )  , h_1_ayudante DOUBLE   , h_2_ayudante DOUBLE   , h_anestesiologo DOUBLE   , h_tratante DOUBLE   , h_artroscopio DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   presupuesto_planti
+CREATE TABLE presupuesto_planti ( consecutivo INTEGER   , tipo_precio VARCHAR ( 1 )  , total_costo DOUBLE   , total_final DOUBLE   , notas MEDIUMTEXT   , tipo_doc VARCHAR ( 3 )  , nom_presupuesto VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   printpresup
+CREATE TABLE printpresup ( id_presupuesto VARCHAR ( 10 )  , consec VARCHAR ( 4 )  , id_producto VARCHAR ( 5 )  , descrip VARCHAR ( 60 )  , cantidad INTEGER   , precioinvt DOUBLE   , preciounidad DOUBLE   , desct DOUBLE   , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , ax_producto VARCHAR ( 5 )  , porc_iva DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   productos
+CREATE TABLE productos ( id_producto VARCHAR ( 5 )  , id_linea VARCHAR ( 2 )  , id_marca VARCHAR ( 4 )  , id_modelo VARCHAR ( 4 )  , descrip VARCHAR ( 200 )  , existmin INTEGER   , existen INTEGER   , ultprov VARCHAR ( 6 )  , docprov VARCHAR ( 20 )  , valorc DOUBLE   , fecultact TIMESTAMP NULL DEFAULT NULL    , valorv DOUBLE   , valor2 DOUBLE   , valor3 DOUBLE   , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , id_tipo VARCHAR ( 2 )  , cantidad SMALLINT   , preciop DOUBLE   , estado VARCHAR ( 1 )  , refprod VARCHAR ( 100 )  , presentacion VARCHAR ( 200 )  , dosificacion VARCHAR ( 200 )  , id_servicio DOUBLE   , id_familia1 DOUBLE   , id_familia2 DOUBLE   , mo_ult_compra DOUBLE   , mo_ult_venta DOUBLE   , tx_co_barra VARCHAR ( 100 )  , ca_min DOUBLE   , ca_max DOUBLE   , id_laboratorio DOUBLE   , tx_no_comercial VARCHAR ( 255 )  , formas VARCHAR ( 100 )  , envase VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   productos_lineas
+CREATE TABLE productos_lineas ( id_linea VARCHAR ( 2 )  , descrip VARCHAR ( 40 )  , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   productos_marcas
+CREATE TABLE productos_marcas ( id_linea VARCHAR ( 2 )  , id_marca VARCHAR ( 4 )  , descrip VARCHAR ( 40 )  , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   productos_modelos
+CREATE TABLE productos_modelos ( id_linea VARCHAR ( 2 )  , id_marca VARCHAR ( 4 )  , id_modelo VARCHAR ( 4 )  , descrip VARCHAR ( 40 )  , fcrea TIMESTAMP NULL DEFAULT NULL    , usuario VARCHAR ( 3 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   proveedor
+CREATE TABLE proveedor ( cod_prov VARCHAR ( 6 )  , proveedor VARCHAR ( 150 )  , rif VARCHAR ( 20 )  , direccion VARCHAR ( 300 )  , telefono VARCHAR ( 20 )  , contacto VARCHAR ( 100 )  , celular VARCHAR ( 20 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   proveedores
+CREATE TABLE proveedores ( id_cliente VARCHAR ( 6 )  , nombres VARCHAR ( 150 )  , rif VARCHAR ( 30 )  , direc1 VARCHAR ( 40 )  , direc2 VARCHAR ( 40 )  , direc3 VARCHAR ( 40 )  , contacto VARCHAR ( 70 )  , cargo VARCHAR ( 70 )  , telcontacto VARCHAR ( 30 )  , telefono1 VARCHAR ( 15 )  , extension1 VARCHAR ( 10 )  , telefono2 VARCHAR ( 15 )  , extension2 VARCHAR ( 10 )  , email VARCHAR ( 80 )  , usuario VARCHAR ( 3 )  , fcrea TIMESTAMP NULL DEFAULT NULL    , nit VARCHAR ( 30 )  , domicilio VARCHAR ( 60 )  , domicilio1 VARCHAR ( 60 )  , porcretiva DOUBLE   , tipo VARCHAR ( 3 )  , sub_tipo VARCHAR ( 3 )  , estado VARCHAR ( 1 )  , porcretalcd DOUBLE   , telefono3 VARCHAR ( 30 )  , telefono4 VARCHAR ( 30 )  , email1 VARCHAR ( 255 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   proveedorestip
+CREATE TABLE proveedorestip ( id_tipo VARCHAR ( 3 )  , tipo VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   proyectos
+CREATE TABLE proyectos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , proyectosiglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   proyectosmodulos
+CREATE TABLE proyectosmodulos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , proyectos_id INTEGER   ) 
+ 
+DROP TABLE   radiologia_obs
+CREATE TABLE radiologia_obs ( numhistoria DOUBLE   , numconsulta DOUBLE   , observacion MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   radiologia_paciente
+CREATE TABLE radiologia_paciente ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , coderadio VARCHAR ( 8 )  , nroopcion INTEGER   , orden INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   radiologias
+CREATE TABLE radiologias ( coderadio VARCHAR ( 8 )  , estudio VARCHAR ( 45 )  , codetipo VARCHAR ( 10 )  , opciones MEDIUMTEXT   , tipo VARCHAR ( 40 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipe_detalle
+CREATE TABLE recipe_detalle ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , recipe INTEGER   , fe_emision DATETIME   , fe_vence INTEGER   , nota MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipe_grupo
+CREATE TABLE recipe_grupo ( codigo VARCHAR ( 4 )  , tratamiento VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipe_grupo_detalle
+CREATE TABLE recipe_grupo_detalle ( codigo VARCHAR ( 4 )  , codemedicina VARCHAR ( 8 )  , descripcion VARCHAR ( 100 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , orden INTEGER   , dosis DOUBLE   , cada DOUBLE   , durante INTEGER   , dosificacion MEDIUMTEXT   , pvc DOUBLE   , pvs DOUBLE   , concentracion DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipe2
+CREATE TABLE recipe2 ( nrohistoria INTEGER   , nroconsulta INTEGER   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , fecha DATETIME   , recipe INTEGER   , comple VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipes
+CREATE TABLE recipes ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , fecha DATETIME   , recipe INTEGER   , totalre MEDIUMTEXT   , comple VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipes_copy
+CREATE TABLE recipes_copy ( nrohistoria INTEGER   , nroconsulta INTEGER   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipes_pareja
+CREATE TABLE recipes_pareja ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , cedula VARCHAR ( 10 )  , nombre VARCHAR ( 200 )  , procedencia VARCHAR ( 4 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   recipes_psico
+CREATE TABLE recipes_psico ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , fecha DATETIME   , recipe INTEGER   , comple VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   referencia
+CREATE TABLE referencia ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , ceduladoctor DOUBLE   , referencia MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   reg_empl_frec_nomina
+CREATE TABLE reg_empl_frec_nomina ( frecuencia_nomina VARCHAR ( 2 )  , nombre_frecuencia VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   reg_empl_tipo_nomina
+CREATE TABLE reg_empl_tipo_nomina ( tipo_nomina VARCHAR ( 2 )  , nombre_nomina VARCHAR ( 50 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   region
+CREATE TABLE region ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   registro_empleados
+CREATE TABLE registro_empleados ( nro_empleado DOUBLE   , fecha_creacion DATETIME   , status VARCHAR ( 1 )  , cedula_empleado VARCHAR ( 20 )  , nombre_empleado VARCHAR ( 100 )  , tipo_nomina VARCHAR ( 2 )  , frecuencia_nomina VARCHAR ( 2 )  , monto_s1 DOUBLE   , monto_s2 DOUBLE   , monto_s3 DOUBLE   , monto_s4 DOUBLE   , monto_total DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   registro_empleados_eje
+CREATE TABLE registro_empleados_eje ( nro_nomina DOUBLE   , descripcion VARCHAR ( 100 )  , fecha_aplicacion DATETIME   , status VARCHAR ( 1 )  , tipo_nomina VARCHAR ( 2 )  , frecuencia_nomina VARCHAR ( 2 )  , monto_total DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   registro_empleados_eje_detalle
+CREATE TABLE registro_empleados_eje_detalle ( nro_nomina DOUBLE   , nro_empleado DOUBLE   , nro_cxp DOUBLE   , monto_empleado DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   registro_operaciones
+CREATE TABLE registro_operaciones ( registro DOUBLE   , dia_registro DATETIME   , hora_registro TIME   , operador VARCHAR ( 10 )  , status VARCHAR ( 10 )  , operacion MEDIUMTEXT   , descricion MEDIUMTEXT   , historia INTEGER   , consulta INTEGER   , medico VARCHAR ( 50 )  , paciente VARCHAR ( 70 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   reposo_paciente
+CREATE TABLE reposo_paciente ( nrohistoria DOUBLE   , nroconsulta DOUBLE   , codereposo VARCHAR ( 1 )  , fdesde DATETIME   , numdias INTEGER   , obser_reposo MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   representante
+CREATE TABLE representante ( numhistoria INTEGER   , nombre VARCHAR ( 40 )  , codeparentesco VARCHAR ( 1 )  , direccion VARCHAR ( 60 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   riesgo
+CREATE TABLE riesgo ( sub_tipo VARCHAR ( 30 )  , descripcion VARCHAR ( 100 )  , puntos INTEGER   , clave INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   riesgo_paciente
+CREATE TABLE riesgo_paciente ( historia DOUBLE   , sub_tipo VARCHAR ( 30 )  , descripcion VARCHAR ( 100 )  , punto INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   riesgo_paciente_opera
+CREATE TABLE riesgo_paciente_opera ( historia DOUBLE   , puntos INTEGER   , clase VARCHAR ( 10 )  , conclusion MEDIUMTEXT   , recomendaciones MEDIUMTEXT   , nombre_intervencion VARCHAR ( 150 )  , consulta DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   rolesdeusuario
+CREATE TABLE rolesdeusuario ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglasroles VARCHAR ( 50 )  ) 
+ 
+DROP TABLE   seg_emp
+CREATE TABLE seg_emp ( codesegemp VARCHAR ( 3 )  , nombre VARCHAR ( 150 )  , rif VARCHAR ( 50 )  , direccion VARCHAR ( 350 )  , telef VARCHAR ( 50 )  , nb_nemo VARCHAR ( 20 )  , pc_cliente DOUBLE   , pc_empresa DOUBLE   , ca_dias INTEGER   , pc_retencion DOUBLE   , in_nomina INTEGER   , id_tipocliente INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   servicios
+CREATE TABLE servicios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   sms_compra
+CREATE TABLE sms_compra ( conse_compra INTEGER   , fecha_compra INTEGER   , monto_compra VARCHAR ( 14 )  , cantidad_compra INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   sms_enviados
+CREATE TABLE sms_enviados ( conta DOUBLE   , usuario VARCHAR ( 10 )  , medico VARCHAR ( 60 )  , proveedor VARCHAR ( 1 )  , numero VARCHAR ( 11 )  , mensaje VARCHAR ( 150 )  , fecha DATETIME   , tipo VARCHAR ( 1 )  , historia INTEGER   , orden INTEGER   , consulta INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   sms_envio_pac
+CREATE TABLE sms_envio_pac ( nrohistoria INTEGER   , nroconsulta INTEGER   , numero_cel VARCHAR ( 14 )  , texto_sms VARCHAR ( 160 )  , orden INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   statusdeprocesos
+CREATE TABLE statusdeprocesos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , seccion VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   subcategoria
+CREATE TABLE subcategoria ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , siglas VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   subfamilia
+CREATE TABLE subfamilia ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   t_administra
+CREATE TABLE t_administra ( co_adm VARCHAR ( 8 )  , nb_adm VARCHAR ( 50 )  , pass_adm VARCHAR ( 8 )  , i_t_adm VARCHAR ( 50 )  , id_caja VARCHAR ( 4 )  , apertura VARCHAR ( 1 )  , estado VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tareas
+CREATE TABLE tareas ( cod_tarea VARCHAR ( 2 )  , tarea MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tareas_paciente
+CREATE TABLE tareas_paciente ( hhistoria DOUBLE   , cod_tarea VARCHAR ( 2 )  , descripcion VARCHAR ( 100 )  , fecha_creada DATETIME   , fecha_tarea DATETIME   , fecha_ejecutada DATETIME   , ejecutada VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   texto_doppler
+CREATE TABLE texto_doppler ( texto VARCHAR ( 10 )  , nivel VARCHAR ( 10 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipo_antecedente
+CREATE TABLE tipo_antecedente ( codetipo VARCHAR ( 2 )  , descripcion VARCHAR ( 40 )  , tipoantecedente VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipo_de_personal
+CREATE TABLE tipo_de_personal ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   tipo_empresa
+CREATE TABLE tipo_empresa ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descrip VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipo_persona
+CREATE TABLE tipo_persona ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   tipo_vacuna
+CREATE TABLE tipo_vacuna ( tipo_vacu VARCHAR ( 10 )  , vacuna VARCHAR ( 200 )  , descripcion MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipodecliente
+CREATE TABLE tipodecliente ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , nemotecnico VARCHAR ( 20 )  , pc_cliente DOUBLE   , pc_empresa DOUBLE   , ca_dias INTEGER   , in_cliente INTEGER   , in_socio DOUBLE   ) 
+ 
+DROP TABLE   tipodecuentabancaria
+CREATE TABLE tipodecuentabancaria ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , tipodecuentasiglas VARCHAR ( 10 )  ) 
+ 
+DROP TABLE   tipodedocumento
+CREATE TABLE tipodedocumento ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   tipodepersona
+CREATE TABLE tipodepersona ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , intipopersona VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   tipodeproducto
+CREATE TABLE tipodeproducto ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  ) 
+ 
+DROP TABLE   tipodeproveedor
+CREATE TABLE tipodeproveedor ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , nemotecnico VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   tipoderegistro
+CREATE TABLE tipoderegistro ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , nemotecnico VARCHAR ( 20 )  ) 
+ 
+DROP TABLE   tipos_conceptos
+CREATE TABLE tipos_conceptos ( id_tipo_concepto VARCHAR ( 4 )  , des_concepto VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipos_documentos
+CREATE TABLE tipos_documentos ( tip_documento VARCHAR ( 2 )  , des_documento VARCHAR ( 100 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipos_examenes
+CREATE TABLE tipos_examenes ( codetipo VARCHAR ( 10 )  , tipo VARCHAR ( 40 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tipos_recipe
+CREATE TABLE tipos_recipe ( codetipo VARCHAR ( 10 )  , tipo VARCHAR ( 40 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   tmp_prueba
+CREATE TABLE tmp_prueba ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , nb_prueba VARCHAR ( 100 )  ) 
+ 
+DROP TABLE   tratamientos
+CREATE TABLE tratamientos ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 150 )  ) 
+ 
+DROP TABLE   ultra_abdominal
+CREATE TABLE ultra_abdominal ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , transductor VARCHAR ( 30 )  , referido INTEGER   , vesicula_bilial MEDIUMTEXT   , higado MEDIUMTEXT   , porta_coledoco MEDIUMTEXT   , pancreas MEDIUMTEXT   , rinon_derecho MEDIUMTEXT   , rinon_izquierdo MEDIUMTEXT   , prostata MEDIUMTEXT   , vejiga_urina VARCHAR ( 1 )  , vol_res_v_p_m VARCHAR ( 1 )  , ascitis VARCHAR ( 1 )  , retroperitoneo VARCHAR ( 1 )  , vasos_sanguineos VARCHAR ( 1 )  , otros MEDIUMTEXT   , conclusiones MEDIUMTEXT   , puro_texto MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ultra_mama
+CREATE TABLE ultra_mama ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , referido INTEGER   , menarquia VARCHAR ( 20 )  , para VARCHAR ( 60 )  , quirurgicos VARCHAR ( 60 )  , hormonas VARCHAR ( 100 )  , tranductor VARCHAR ( 100 )  , mama_derecha MEDIUMTEXT   , axila_derecha MEDIUMTEXT   , mama_izquierda MEDIUMTEXT   , axila_izquierda MEDIUMTEXT   , puro_texto MEDIUMTEXT   , conclusion MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ultra_prostatico
+CREATE TABLE ultra_prostatico ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , psa_total DOUBLE   , psa_libre DOUBLE   , psa_relacion DOUBLE   , tacto_rectal MEDIUMTEXT   , tex_basico MEDIUMTEXT   , anestesia VARCHAR ( 10 )  , diametro_long DOUBLE   , diametro_trans DOUBLE   , diametro_anterop DOUBLE   , volumen DOUBLE   , densidad DOUBLE   , capsula VARCHAR ( 10 )  , nodulos VARCHAR ( 10 )  , nodulos_ubicacion VARCHAR ( 10 )  , nodulos_caracteristicas VARCHAR ( 300 )  , protocolo_biopsia_cilindros_de DOUBLE   , protocolo_biopsia_cilindros_iz DOUBLE   , conclusion MEDIUMTEXT   , medico_1 INTEGER   , medico_2 INTEGER   , equipo VARCHAR ( 20 )  , trasductor VARCHAR ( 20 )  , frecuencia DOUBLE   , diametro_ld VARCHAR ( 10 )  , diametro_li VARCHAR ( 10 )  , diametro_long_ld DOUBLE   , diametro_long_li DOUBLE   , diametro_trans_ld DOUBLE   , diametro_trans_li DOUBLE   , diametro_anterop_ld DOUBLE   , diametro_anterop_li DOUBLE   , vesiculas_s MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ultra_testiculos
+CREATE TABLE ultra_testiculos ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , equipo VARCHAR ( 20 )  , transductor VARCHAR ( 20 )  , frecuencia DOUBLE   , motivo_estudio MEDIUMTEXT   , td_long DOUBLE   , td_tranv DOUBLE   , td_post DOUBLE   , td_parequima MEDIUMTEXT   , td_epididimo MEDIUMTEXT   , td_epididimo_med_1 DOUBLE   , td_epididimo_med_2 DOUBLE   , td_hidrocele VARCHAR ( 50 )  , td_diametro_plexo DOUBLE   , ti_long DOUBLE   , ti_tranv DOUBLE   , ti_post DOUBLE   , ti_parequima MEDIUMTEXT   , ti_epididimo MEDIUMTEXT   , ti_epididimo_med_1 DOUBLE   , ti_epididimo_med_2 DOUBLE   , ti_hidrocele VARCHAR ( 50 )  , ti_diametro_plexo DOUBLE   , conclusion MEDIUMTEXT   , hallazgos MEDIUMTEXT   , medico_1 INTEGER   , medico_2 INTEGER   , doppler_td MEDIUMTEXT   , doppler_ti MEDIUMTEXT   , observaciones MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   ultra_tiroides_musculo
+CREATE TABLE ultra_tiroides_musculo ( historia DOUBLE   , consulta DOUBLE   , fecha DATETIME   , transductor VARCHAR ( 30 )  , referido INTEGER   , texto MEDIUMTEXT   , puro_texto MEDIUMTEXT   , conclusiones MEDIUMTEXT   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   usuarios
+CREATE TABLE usuarios ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , descripcion VARCHAR ( 200 )  , clave VARCHAR ( 190 )  , correo VARCHAR ( 190 )  , login1 VARCHAR ( 20 )  , rolesdeusuario_id INTEGER   ) 
+ 
+DROP TABLE   vacuna_paciente
+CREATE TABLE vacuna_paciente ( historia DOUBLE   , codi_vacuna VARCHAR ( 4 )  , dosis VARCHAR ( 50 )  , fecha_planeada DATETIME   , fecha_ejecutada DATETIME   , ejecutada VARCHAR ( 1 )  , nota MEDIUMTEXT   , descripcion VARCHAR ( 100 )  , fecha_proxima_dosis DATETIME   , dosis_numero INTEGER   , edad_aplicada DOUBLE   , comentario MEDIUMTEXT   , prioridad VARCHAR ( 1 )  , lote VARCHAR ( 10 )  , via VARCHAR ( 30 )  , zona VARCHAR ( 30 )  , tipo_vacu VARCHAR ( 10 )  , aplicada_aca VARCHAR ( 1 )  , fecha_vence DATETIME   , fecha_proxima_vac DATETIME   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas
+CREATE TABLE vacunas ( codi_vacuna VARCHAR ( 4 )  , vacuna VARCHAR ( 100 )  , edad_inicial_meses INTEGER   , frecuencia INTEGER   , total INTEGER   , cobertura VARCHAR ( 200 )  , dosis VARCHAR ( 50 )  , fija VARCHAR ( 1 )  , edad_final_meses INTEGER   , sexo VARCHAR ( 1 )  , cantidad INTEGER   , preciov DOUBLE   , tipo_vacu VARCHAR ( 10 )  , adulto_ni VARCHAR ( 1 )  , prioridad INTEGER   , inventa_propia VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas_aplicadas
+CREATE TABLE vacunas_aplicadas ( codi_vacuna VARCHAR ( 4 )  , historia DOUBLE   , consulta INTEGER   , fecha DATETIME   , dosis INTEGER   , paciente VARCHAR ( 100 )  , des_vacuna VARCHAR ( 100 )  , cantidad INTEGER   , preciovu DOUBLE   , preciovt DOUBLE   , cod_segu VARCHAR ( 3 )  , medico INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas_compra
+CREATE TABLE vacunas_compra ( num_compra INTEGER   , cod_proveedor VARCHAR ( 4 )  , fecha DATETIME   , factura VARCHAR ( 20 )  , preciot DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas_compradas
+CREATE TABLE vacunas_compradas ( codi_vacuna VARCHAR ( 4 )  , cod_proveedor VARCHAR ( 4 )  , fecha DATETIME   , des_vacuna VARCHAR ( 100 )  , cantidad INTEGER   , factura VARCHAR ( 20 )  , precioc DOUBLE   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas_dosis
+CREATE TABLE vacunas_dosis ( codi_vacuna VARCHAR ( 4 )  , dosis INTEGER   , dosis_descri VARCHAR ( 50 )  , meses DOUBLE   , obligatoria VARCHAR ( 1 )  , sexo VARCHAR ( 1 )  , frecuencia VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vacunas_salidas
+CREATE TABLE vacunas_salidas ( codi_vacuna VARCHAR ( 4 )  , historia INTEGER   , consulta INTEGER   , fecha DATETIME   , hora TIME   , paciente VARCHAR ( 100 )  , des_vacuna VARCHAR ( 100 )  , cantidad INTEGER   , medico INTEGER   , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vademecum
+CREATE TABLE vademecum ( codemedicina VARCHAR ( 8 )  , nombregenerico VARCHAR ( 35 )  , nombrecomercial VARCHAR ( 35 )  , dosificacion MEDIUMTEXT   , uso MEDIUMTEXT   , presentacion VARCHAR ( 50 )  , concentracion DOUBLE   , cada DOUBLE   , durante INTEGER   , pvc DOUBLE   , pvs DOUBLE   , dosis DOUBLE   , sico VARCHAR ( 1 )  , nombrecomercial1 VARCHAR ( 40 )  , nombrecomercial2 VARCHAR ( 40 )  , nombrecomercial3 VARCHAR ( 40 )  , totalre MEDIUMTEXT   , sicome VARCHAR ( 1 )  , sicome1 VARCHAR ( 1 )  , sicome2 VARCHAR ( 1 )  , sicome3 VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vademecum_m
+CREATE TABLE vademecum_m ( codemedicina VARCHAR ( 200 )  , nombregenerico VARCHAR ( 35 )  , nombrecomercial VARCHAR ( 35 )  , dosificacion MEDIUMTEXT   , uso MEDIUMTEXT   , presentacion VARCHAR ( 35 )  , concentracion DOUBLE   , cada DOUBLE   , durante INTEGER   , pvc DOUBLE   , pvs DOUBLE   , dosis DOUBLE   , sico VARCHAR ( 1 )  , nombrecomercial1 VARCHAR ( 40 )  , nombrecomercial2 VARCHAR ( 40 )  , nombrecomercial3 VARCHAR ( 40 )  , totalre MEDIUMTEXT   , sicome VARCHAR ( 1 )  , sicome1 VARCHAR ( 1 )  , sicome2 VARCHAR ( 1 )  , sicome3 VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vademecum_pedia
+CREATE TABLE vademecum_pedia ( codemedicina VARCHAR ( 8 )  , nombregenerico VARCHAR ( 35 )  , nombrecomercial VARCHAR ( 35 )  , dosificacion MEDIUMTEXT   , uso MEDIUMTEXT   , presentacion VARCHAR ( 50 )  , concentracion DOUBLE   , cada DOUBLE   , durante INTEGER   , pvc DOUBLE   , pvs DOUBLE   , dosis DOUBLE   , sico VARCHAR ( 1 )  , nombrecomercial1 VARCHAR ( 40 )  , nombrecomercial2 VARCHAR ( 40 )  , nombrecomercial3 VARCHAR ( 40 )  , totalre MEDIUMTEXT   , sicome VARCHAR ( 1 )  , sicome1 VARCHAR ( 1 )  , sicome2 VARCHAR ( 1 )  , sicome3 VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
+DROP TABLE   vendedores
+CREATE TABLE vendedores ( id_codigo VARCHAR ( 3 )  , nombre VARCHAR ( 50 )  , telefc VARCHAR ( 15 )  , telefh VARCHAR ( 15 )  , direc1 VARCHAR ( 50 )  , direc2 VARCHAR ( 50 )  , direc3 VARCHAR ( 50 )  , porctv DOUBLE   , porctc DOUBLE   , estado VARCHAR ( 1 )  , usercreated_at VARCHAR ( 30 )  , userupdated_at VARCHAR ( 30 )  , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    , user_data_id integer ( 11 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE ) 
+ 
